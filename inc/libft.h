@@ -6,16 +6,16 @@
 /*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 01:26:11 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/11 15:33:59 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/21 22:43:00 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <stdarg.h>
 # include <fcntl.h>  //open
 # include <limits.h> //Macro INT_MAX
+# include <stdarg.h>
 # include <stddef.h> //NULL
 # include <stdlib.h> //free
 # include <unistd.h> //read
@@ -23,6 +23,19 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1000000
 # endif
+
+typedef struct s_node
+{
+	int				value;
+	struct s_node	*prev;
+	struct s_node	*next;
+}					t_node;
+
+typedef struct s_stack
+{
+	struct s_node	*head;
+	struct s_node	*tail;
+}					t_stack;
 
 /*-----------------------------------------LIBFT---------------------------------------------*/
 /*Libc functions*/
@@ -123,28 +136,28 @@ long				ft_atol(const char *str);
 
 /*---------------------------DOUBLE LIMKED LIST-------------------------------*/
 
-struct dll_edge		*dll_init(void);
-t_node				*dll_new_node(ssize_t data);
-size_t				dll_size(struct dll_edge *edge);
-void				dll_insert_head(ssize_t data, struct dll_edge *edge);
-void				dll_insert_tail(ssize_t data, struct dll_edge *edge);
-void				dll_delete_head(struct dll_edge *edge);
-void				dll_delete_tail(struct dll_edge *edge);
-void				dll_print_forward(struct dll_edge *edge);
-void				dll_clear(struct dll_edge *edge);
+t_stack				*dll_init(void);
+t_node				*dll_new_node(int data);
+size_t				dll_size(t_stack *stack);
+void				dll_insert_head(int data, t_stack *stack);
+void				dll_insert_tail(int data, t_stack *stack);
+void				dll_delete_head(t_stack *stack);
+void				dll_delete_tail(t_stack *stack);
+void				dll_print_forward(t_stack *stack);
+void				dll_clear(t_stack *stack);
 
 /*-----------------------------GET NEXT LINE----------------------------------*/
 
 /* get_next_line */
-char	*get_next_line(int fd);
-char	*ft_set_line(char *line_buffer);
-char	*ft_fill_line_buffer(int fd, char *stash, char *buffer);
+char				*get_next_line(int fd);
+char				*ft_set_line(char *line_buffer);
+char				*ft_fill_line_buffer(int fd, char *stash, char *buffer);
 
 /* get_next_line_utils */
-int		strlen(const char *str);
-char	*strchr_index(char *str);
-char	*strdup(char *s1);
-char	*strjoin(char *s1, char *s2);
-char	*substr(char *s, int start, int len);
+int					my_strlen(const char *str);
+char				*strchr_index(char *str);
+char				*my_strdup(char *s1);
+char				*strjoin(char *s1, char *s2);
+char				*substr(char *s, int start, int len);
 
 #endif
