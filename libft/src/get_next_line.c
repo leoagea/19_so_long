@@ -6,7 +6,7 @@
 /*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 15:34:17 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/11 15:35:05 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/21 22:41:16 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	*ft_set_line(char *line_buffer)
 		i++;
 	if (line_buffer[i] == 0 || line_buffer[1] == 0)
 		return (NULL);
-	line = ft_substr(line_buffer, i + 1, ft_strlen(line_buffer) - i);
+	line = substr(line_buffer, i + 1, my_strlen(line_buffer) - i);
 	if (!line)
 		return (NULL);
 	if (*line == 0)
@@ -80,12 +80,12 @@ char	*ft_fill_line_buffer(int fd, char *stash, char *buffer)
 			break ;
 		buffer[b_read] = 0;
 		if (!stash)
-			stash = ft_strdup("");
+			stash = my_strdup("");
 		tmp = stash;
-		stash = ft_strjoin(tmp, buffer);
+		stash = strjoin(tmp, buffer);
 		free(tmp);
 		tmp = NULL;
-		if (ft_strchr_index(buffer))
+		if (strchr_index(buffer))
 			break ;
 	}
 	return (stash);

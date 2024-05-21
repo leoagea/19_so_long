@@ -6,13 +6,13 @@
 /*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 15:35:28 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/11 15:36:30 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/21 22:42:02 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/libft.h"
 
-int	strlen(const char *str)
+int	my_strlen(const char *str)
 {
 	int	len;
 
@@ -48,7 +48,7 @@ char	*strjoin(char *s1, char *s2)
 	int		j;
 	char	*res;
 
-	res = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	res = (char *)malloc((my_strlen(s1) + my_strlen(s2) + 1) * sizeof(char));
 	if (!res)
 		return (NULL);
 	i = 0;
@@ -62,7 +62,7 @@ char	*strjoin(char *s1, char *s2)
 	return (res);
 }
 
-char	*strdup(char *s1)
+char	*my_strdup(char *s1)
 {
 	char			*dest;
 	unsigned int	i;
@@ -89,10 +89,10 @@ char	*substr(char *s, int start, int len)
 
 	if (!s)
 		return (NULL);
-	if (start > ft_strlen(s))
+	if (start > my_strlen(s))
 		return (malloc(1));
-	if (len > ft_strlen(s + start))
-		len = ft_strlen(s + start);
+	if (len > my_strlen(s + start))
+		len = my_strlen(s + start);
 	str = malloc((len + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
