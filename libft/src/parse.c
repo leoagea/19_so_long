@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 12:06:36 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/01 17:00:11 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/20 18:34:32 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ int	ft_parse_printf(const char *s, int index, va_list *par)
 	else if (s[index + 1] == 'u')
 		return (ft_print_udecimal(va_arg(*par, unsigned int)));
 	else if (s[index + 1] == 'x')
-		return (ft_print_hex(va_arg(*par, long),"0123456789abcdef"));
+		return (ft_print_hex(va_arg(*par, long), "0123456789abcdef"));
 	else if (s[index + 1] == 'X')
-		return (ft_print_hex(va_arg(*par, long),"0123456789ABCDEF"));
+		return (ft_print_hex(va_arg(*par, long), "0123456789ABCDEF"));
 	else if (s[index + 1] == '%')
 		return (write(1, "%", 1));
 	else

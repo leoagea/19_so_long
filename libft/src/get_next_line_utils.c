@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/11 15:35:28 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/21 22:42:02 by lagea            ###   ########.fr       */
+/*   Created: 2024/04/22 22:29:25 by lagea             #+#    #+#             */
+/*   Updated: 2024/05/21 12:14:18 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/libft.h"
+#include "../../inc/libft.h"
 
 int	my_strlen(const char *str)
 {
@@ -48,7 +48,7 @@ char	*strjoin(char *s1, char *s2)
 	int		j;
 	char	*res;
 
-	res = (char *)malloc((my_strlen(s1) + my_strlen(s2) + 1) * sizeof(char));
+	res = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
 	if (!res)
 		return (NULL);
 	i = 0;
@@ -67,7 +67,7 @@ char	*my_strdup(char *s1)
 	char			*dest;
 	unsigned int	i;
 
-	if(!s1)
+	if (!s1)
 		return (NULL);
 	dest = (char *)malloc(ft_strlen(s1) + 1);
 	if (!dest)

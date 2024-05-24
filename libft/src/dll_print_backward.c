@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dll_delete_head.c                                  :+:      :+:    :+:   */
+/*   dll_print_backward.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/06 00:18:01 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/20 18:33:33 by lagea            ###   ########.fr       */
+/*   Created: 2024/05/15 13:38:24 by lagea             #+#    #+#             */
+/*   Updated: 2024/05/20 18:34:04 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/libft.h"
 #include "../../inc/push_swap.h"
 
-void	dll_delete_head(t_stack *stack)
+void	dll_print_backward(t_stack *stack)
 {
-	t_node	*temp;
+	t_node	*current;
 
-	temp = stack->head;
-	if (stack->head == stack->tail)
-		return ;
-	stack->head = temp->next;
-	stack->head->prev = NULL;
-	free(temp);
+	current = stack->tail;
+	while (current != NULL)
+	{
+		printf("index %d : %zd\n", current->index, current->value);
+		current = current->prev;
+	}
 }

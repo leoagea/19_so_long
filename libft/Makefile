@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lagea < lagea@student.s19.be >             +#+  +:+       +#+         #
+#    By: lagea <lagea@student.s19.be>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/01 16:07:15 by lagea             #+#    #+#              #
-#    Updated: 2024/05/21 22:54:29 by lagea            ###   ########.fr        #
+#    Updated: 2024/05/21 13:10:25 by lagea            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,9 +38,9 @@ SRC = src/ft_atoi.c src/ft_bzero.c src/ft_calloc.c src/ft_isalnum.c src/ft_isalp
 		src/printf.c src/parse.c src/print_elements.c \
 		src/print_elements_2.c src/utils_len.c src/ft_putunbr_fd.c src/ft_atol.c \
 		src/dll_insert_head.c src/dll_insert_tail.c src/dll_new_node.c \
-		src/dll_print_forward.c src/dll_init.c src/dll_size.c src/dll_clear.c \
-		src/dll_delete_head.c src/dll_delete_tail.c  src/get_next_line.c \
-		src/get_next_line_utils.c \
+		src/dll_print_forward.c src/dll_size.c src/dll_clear.c \
+		src/dll_delete_head.c src/dll_delete_tail.c src/dll_print_backward.c \
+		src/get_next_line.c src/get_next_line_utils.c 
 
 OBJ = $(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 
@@ -60,7 +60,7 @@ endef
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(CFLAGS) $(INCS) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCS) -g -c $< -o $@
 	$(call progress_bar_push_swap)
 
 all: $(NAME)

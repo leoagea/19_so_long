@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/11 15:34:17 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/21 22:41:16 by lagea            ###   ########.fr       */
+/*   Created: 2024/04/22 22:29:14 by lagea             #+#    #+#             */
+/*   Updated: 2024/05/21 12:13:25 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/libft.h"
+#include "../../inc/libft.h"
 
 char	*get_next_line(int fd)
 {
