@@ -6,31 +6,31 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 13:34:55 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/24 17:01:40 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/24 17:41:07 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/libft.h"
 
-void	dll_insert_tail(int data, t_stack *stack)
+void	dll_insert_tail(int data, t_dll *dll)
 {
 	t_node	*new;
 
 	new = dll_new_node(data);
 	if (new == NULL)
 	{
-		dll_clear(stack);
+		dll_clear(dll);
 		return ;
 	}
-	if (stack->tail == NULL)
+	if (dll->tail == NULL)
 	{
-		stack->head = new;
-		stack->tail = new;
+		dll->head = new;
+		dll->tail = new;
 	}
 	else
 	{
-		new->prev = stack->tail;
-		stack->tail->next = new;
-		stack->tail = new;
+		new->prev = dll->tail;
+		dll->tail->next = new;
+		dll->tail = new;
 	}
 }

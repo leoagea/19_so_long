@@ -6,19 +6,19 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 13:38:24 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/24 17:02:27 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/24 17:41:07 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/libft.h"
 
-void	dll_print_backward(t_stack *stack)
+void	dll_print_backward(t_dll *dll)
 {
 	int i;
 	t_node	*current;
 
 	i = 0;
-	current = stack->tail;
+	current = dll->tail;
 	while (current != NULL)
 	{
 		ft_printf("index %d : %d\n", i, current->value);

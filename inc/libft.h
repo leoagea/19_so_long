@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 01:26:11 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/21 22:43:00 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/24 17:44:43 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ typedef struct s_node
 	struct s_node	*next;
 }					t_node;
 
-typedef struct s_stack
+typedef struct s_dll
 {
 	struct s_node	*head;
 	struct s_node	*tail;
-}					t_stack;
+}					t_dll;
 
 /*-----------------------------------------LIBFT---------------------------------------------*/
 /*Libc functions*/
@@ -136,15 +136,15 @@ long				ft_atol(const char *str);
 
 /*---------------------------DOUBLE LIMKED LIST-------------------------------*/
 
-t_stack				*dll_init(void);
+void				dll_init(t_dll *dll);
 t_node				*dll_new_node(int data);
-size_t				dll_size(t_stack *stack);
-void				dll_insert_head(int data, t_stack *stack);
-void				dll_insert_tail(int data, t_stack *stack);
-void				dll_delete_head(t_stack *stack);
-void				dll_delete_tail(t_stack *stack);
-void				dll_print_forward(t_stack *stack);
-void				dll_clear(t_stack *stack);
+size_t				dll_size(t_dll *dll);
+void				dll_insert_head(int data, t_dll *dll);
+void				dll_insert_tail(int data, t_dll *dll);
+void				dll_delete_head(t_dll *dll);
+void				dll_delete_tail(t_dll *dll);
+void				dll_print_forward(t_dll *dll);
+void				dll_clear(t_dll *dll);
 
 /*-----------------------------GET NEXT LINE----------------------------------*/
 

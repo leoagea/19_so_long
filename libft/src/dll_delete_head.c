@@ -6,20 +6,20 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 00:18:01 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/24 16:58:45 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/24 17:41:07 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/libft.h"
 
-void	dll_delete_head(t_stack *stack)
+void	dll_delete_head(t_dll *dll)
 {
 	t_node	*temp;
 
-	temp = stack->head;
-	if (stack->head == stack->tail)
+	temp = dll->head;
+	if (dll->head == dll->tail)
 		return ;
-	stack->head = temp->next;
-	stack->head->prev = NULL;
+	dll->head = temp->next;
+	dll->head->prev = NULL;
 	free(temp);
 }
