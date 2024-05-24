@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 01:26:11 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/24 17:44:43 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/24 18:00:48 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@
 # include <stdarg.h>
 # include <stddef.h> //NULL
 # include <stdlib.h> //free
+# include <stdio.h> //perror
+# include <string.h> //strerror
 # include <unistd.h> //read
+# include <errno.h> //errno
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1000000

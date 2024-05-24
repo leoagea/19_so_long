@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/24 17:04:03 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/24 19:01:48 by lagea            ###   ########.fr       */
+/*   Created: 2024/05/24 17:35:54 by lagea             #+#    #+#             */
+/*   Updated: 2024/05/24 19:05:21 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-#define SO_LONG_H
+#include "inc/so_long.h"
 
-#include "libft.h"
-#include <mlx.h>
+char **open_map(char *path)
+{
+	int op;
+	char *read;
+	char **map;
+	
+	op = open(path, O_RDONLY);
+	if (op == -1)
+	{
+		ft_printf("Error\n");
+		ft_printf("%s\n",strerror(errno));
+		exit(EXIT_FAILURE);
+	}
+}
 
-/*====================Parser====================*/
-
-/*---------------------Map----------------------*/
-
-char **open_map(char *path);
-char **read_map(int fd);
-
-#endif
