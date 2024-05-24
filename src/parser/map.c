@@ -3,19 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
+/*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:35:54 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/24 20:24:42 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/24 23:16:46 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/so_long.h"
 
 void open_map(t_data *data)
-{
-	char **map;
-	
+{	
 	data->map.fd = open(data->map.path, O_RDONLY);
 	if (data->map.fd == -1)
 	{
@@ -61,7 +59,7 @@ void get_malloc_size(t_data *data)
 
 void parse_map(t_data *data)
 {
-	
+	(void) data;
 }
 // char **read_map(int fd)
 // {
