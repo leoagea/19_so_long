@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lagea < lagea@student.s19.be >             +#+  +:+       +#+         #
+#    By: lagea <lagea@student.s19.be>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/06 01:08:23 by lagea             #+#    #+#              #
-#    Updated: 2024/05/11 15:26:09 by lagea            ###   ########.fr        #
+#    Updated: 2024/05/24 20:14:43 by lagea            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,12 @@ NAME		= so_long
 SRC_DIR		= src/
 OBJ_DIR		= obj/
 INC_DIR		= inc/
+PARSER_DIR	= src/parser/
+EXIT_DIR	= src/exit/
 
-SRC 		= $(wildcard $(SRC_DIR)*.c)  
+MAP			= $(wildcard $(PARSER_DIR)*.c)  
+EXIT		= $(wildcard $(EXIT_DIR)*.c)  
+SRC 		= $(wildcard $(SRC_DIR)*.c)  $(MAP) $(EXIT)
 OBJ			= $(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 
 LIBFT 		= lib/libft.a
@@ -44,7 +48,8 @@ define progress_bar_push_swap
 endef
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
-	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)/parser
+	@mkdir -p $(OBJ_DIR)/exit
 	@$(CC) $(CFLAGS) $(INCS) -c $< -o $@
 	$(call progress_bar_push_swap)
 

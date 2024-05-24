@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:04:03 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/24 20:13:19 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/24 20:23:26 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_data
 
 void open_map(t_data *data);
 void get_malloc_size(t_data *data);
+void parse_map(t_data *data);
 // char		**read_map(int fd);
 
 /*=====================EXIT=====================*/
