@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lagea <lagea@student.s19.be>               +#+  +:+       +#+         #
+#    By: lagea < lagea@student.s19.be >             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/06 01:08:23 by lagea             #+#    #+#              #
-#    Updated: 2024/05/24 20:14:43 by lagea            ###   ########.fr        #
+#    Updated: 2024/05/24 23:15:48 by lagea            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,14 +50,14 @@ endef
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)/parser
 	@mkdir -p $(OBJ_DIR)/exit
-	@$(CC) $(CFLAGS) $(INCS) -c $< -o $@
+	$(CC) $(C_FLAGS) $(INCS) -Imlx -c $< -o $@
 	$(call progress_bar_push_swap)
 
 all: $(LIBFT) $(NAME)
 
 $(NAME): $(OBJ)
 	@echo "$(GREEN)Linking objects to create executable...$(NC)"
-	@$(CC) $(OBJ) -Llib/ -lft -o $(NAME)
+	@$(CC) $(OBJ) -Llib/ -lft -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 	@echo "$(BLUE)Executable $(NAME) created!$(NC)"
 
 $(LIBFT):
