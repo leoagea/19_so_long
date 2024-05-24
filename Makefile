@@ -6,7 +6,7 @@
 #    By: lagea < lagea@student.s19.be >             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/06 01:08:23 by lagea             #+#    #+#              #
-#    Updated: 2024/05/24 23:15:48 by lagea            ###   ########.fr        #
+#    Updated: 2024/05/24 23:41:53 by lagea            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,12 +22,14 @@ NAME		= so_long
 SRC_DIR		= src/
 OBJ_DIR		= obj/
 INC_DIR		= inc/
-PARSER_DIR	= src/parser/
-EXIT_DIR	= src/exit/
+#EXIT_DIR	= src/exit/
+#PARSER_DIR	= src/parser/
+#RENDER_DIR	= src/render
 
-MAP			= $(wildcard $(PARSER_DIR)*.c)  
-EXIT		= $(wildcard $(EXIT_DIR)*.c)  
-SRC 		= $(wildcard $(SRC_DIR)*.c)  $(MAP) $(EXIT)
+#EXIT		= $(wildcard $(EXIT_DIR)*.c)
+#MAP			= $(wildcard $(PARSER_DIR)*.c)  
+#RENDER		= $(wildcard $(RENDER_DIR)*.c)
+SRC 		= $(wildcard $(SRC_DIR)*.c)  #$(MAP) $(EXIT) $(RENDER)
 OBJ			= $(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 
 LIBFT 		= lib/libft.a
@@ -37,6 +39,7 @@ CC			= gcc
 RM			= rm -f
 C_FLAGS		= -Wall -Wextra -Werror
 INCS 		= -I$(INC_DIR) -I.
+MLX			= -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 TOTAL_FILES 	:= $(words $(SRC))
 CURRENT_FILE 	:= 0
@@ -50,6 +53,7 @@ endef
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)/parser
 	@mkdir -p $(OBJ_DIR)/exit
+	@mkdir -p $(OBJ_DIR)/render
 	$(CC) $(C_FLAGS) $(INCS) -Imlx -c $< -o $@
 	$(call progress_bar_push_swap)
 
@@ -57,7 +61,7 @@ all: $(LIBFT) $(NAME)
 
 $(NAME): $(OBJ)
 	@echo "$(GREEN)Linking objects to create executable...$(NC)"
-	@$(CC) $(OBJ) -Llib/ -lft -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	@$(CC) $(OBJ) -Llib/ -lft $(MLX) -o $(NAME)
 	@echo "$(BLUE)Executable $(NAME) created!$(NC)"
 
 $(LIBFT):

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
+/*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:04:03 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/24 20:23:26 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/25 00:07:33 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,17 @@
 # define SO_LONG_H
 
 # include "libft.h"
-# include <mlx.h>
+// # include <mlx.h>
+#include "mlx/mlx.h"
 
 #define EMPTY "Map file is empty"
 #define NOT_RECT "Map is not rectangular"
-
+#define PIXEL 128
+# define A 0
+# define S 1
+# define D 2
+# define W 13
+# define ESC 53
 typedef struct s_map
 {
 	int		fd;
@@ -29,11 +35,21 @@ typedef struct s_map
 
 }			t_map;
 
+typedef struct s_mlx
+{
+	void *mlx;
+	void *win;
+	
+}			t_mlx;
+
 typedef struct s_data
 {
 	t_map	map;
-
+	t_mlx	mlx;
+	int count;
+	
 }			t_data;
+
 
 /*====================PARSER====================*/
 /*---------------------Map----------------------*/
@@ -47,5 +63,10 @@ void parse_map(t_data *data);
 /*---------------------exit---------------------*/
 
 void exit_message(char *str);
+
+/*====================RENDER====================*/
+/*--------------------RENDER--------------------*/
+
+void render_map(t_data *data);
 
 #endif
