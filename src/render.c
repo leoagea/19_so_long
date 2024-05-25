@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 23:32:36 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/25 00:07:50 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/25 16:31:28 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,37 @@ typedef struct	s_img {
 	int		endian;
 }				t_img;
 
-static int	key_hook(int keycode, t_data *vars)
+int when_destroy(t_data *data)
 {
-	if (keycode)
-		printf("Hello from key_hook!\n");
-	vars->count++;
+	mlx_destroy_window(data->mlx.mlx, data->mlx.win);
+	free(data->mlx.mlx);
+	exit(0);
 	return (0);
+}
+
+int when_keypress(int keysym, t_data *data)
+{
+	data->count++;
+	mlx_hook(data->mlx.win, KeyPress, KeyPressMask, &when_keypress, data);
+	if (keysym == ESC)
+		on_destroy(data);
+	printf("Moves : %d\n", data->count);
+	return (1);
 }
 
 void render_map(t_data *data)
 {
 	
     data->mlx.mlx = mlx_init();
+	if (!data->mlx.mlx)
+		exit(EXIT_FAILURE);
 	data->mlx.win = mlx_new_window(data->mlx.mlx, 1280, 720, "So_long");
+	if (!data->mlx.win)
+	{
+		free(data->mlx.mlx);
+		exit(EXIT_FAILURE);
+	}
 
-	mlx_key_hook(data->mlx.win,key_hook, data);
-	
+	mlx_key_hook(data->mlx.win, &when_keypress,data);
 	mlx_loop(data->mlx.mlx);
 }
