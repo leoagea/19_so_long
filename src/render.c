@@ -6,36 +6,11 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 23:32:36 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/25 16:51:58 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/25 18:03:13 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-typedef struct	s_img {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_img;
-
-int when_destroy(t_data *data)
-{
-	mlx_destroy_window(data->mlx.mlx, data->mlx.win);
-	free(data->mlx.mlx);
-	exit(0);
-	return (0);
-}
-
-int when_keypress(int keysym, t_data *data)
-{
-	data->count++;
-	if (keysym == ESC)
-		when_destroy(data);
-	printf("Moves : %d\n", data->count);
-	return (1);
-}
 
 void render_map(t_data *data)
 {
@@ -52,5 +27,20 @@ void render_map(t_data *data)
 
 	mlx_hook(data->mlx.win,KeyPress,KeyPressMask,&when_keypress,data);
 	mlx_hook(data->mlx.win, DestroyNotify, 0, &when_destroy, data);
+	load_xpm(data);
+	render_xpm(data);
 	mlx_loop(data->mlx.mlx);
 }
+
+void load_xpm(t_data *data)
+{
+	int x = 64;
+	int y = 64;
+	data->xpm.test = mlx_xpm_file_to_image(data->mlx.mlx, "assets/Dungeon_Tileset.xpm", &x, &y);
+}
+
+void render_xpm(t_data *data)
+{
+	mlx_put_image_to_window(data->mlx.mlx, data->mlx.win, data->xpm.test, 0, 0);	
+}
+

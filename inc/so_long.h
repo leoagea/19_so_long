@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:04:03 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/25 17:48:04 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/25 18:01:52 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,17 @@ typedef struct s_mlx
 
 }				t_mlx;
 
+typedef struct s_xpm
+{
+	void *test;
+	
+}				t_xpm;
+
 typedef struct s_data
 {
 	t_map		map;
 	t_mlx		mlx;
+	t_xpm		xpm;
 	t_exit		exit;
 	t_player	player;
 	t_ennemy	ennemy;
@@ -103,6 +110,8 @@ void			exit_message(char *str);
 /*--------------------RENDER--------------------*/
 
 void			render_map(t_data *data);
+void load_xpm(t_data *data);
+void render_xpm(t_data *data);
 
 /*====================Events====================*/
 /*--------------------Events--------------------*/
