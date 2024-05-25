@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:35:54 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/25 17:50:10 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/25 18:03:33 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void parse_map(t_data *data)
 	while (i < data->map.y)
 	{
 		data->map.layout[i] = get_next_line(data->map.fd);
-		get_info_map(i, data);
+		// get_info_map(i, data);
 		printf("%s",data->map.layout[i]);
 		i++;
 	}
