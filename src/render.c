@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 23:32:36 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/25 16:31:28 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/25 16:51:58 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,8 @@ int when_destroy(t_data *data)
 int when_keypress(int keysym, t_data *data)
 {
 	data->count++;
-	mlx_hook(data->mlx.win, KeyPress, KeyPressMask, &when_keypress, data);
 	if (keysym == ESC)
-		on_destroy(data);
+		when_destroy(data);
 	printf("Moves : %d\n", data->count);
 	return (1);
 }
@@ -51,6 +50,7 @@ void render_map(t_data *data)
 		exit(EXIT_FAILURE);
 	}
 
-	mlx_key_hook(data->mlx.win, &when_keypress,data);
+	mlx_hook(data->mlx.win,KeyPress,KeyPressMask,&when_keypress,data);
+	mlx_hook(data->mlx.win, DestroyNotify, 0, &when_destroy, data);
 	mlx_loop(data->mlx.mlx);
 }
