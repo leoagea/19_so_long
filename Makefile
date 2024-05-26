@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lagea <lagea@student.s19.be>               +#+  +:+       +#+         #
+#    By: lagea < lagea@student.s19.be >             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/06 01:08:23 by lagea             #+#    #+#              #
-#    Updated: 2024/05/25 17:33:57 by lagea            ###   ########.fr        #
+#    Updated: 2024/05/25 22:25:30 by lagea            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,7 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)/parser
 	@mkdir -p $(OBJ_DIR)/exit
 	@mkdir -p $(OBJ_DIR)/render
-	@$(CC) $(C_FLAGS) $(INCS) -Imlx -c $< -o $@
+	@$(CC) $(C_FLAGS) $(INCS) -Imlx -c $< -g -o $@
 	$(call progress_bar_push_swap)
 
 all: $(LIBFT) $(NAME)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
+/*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:35:54 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/25 18:03:33 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/26 00:30:34 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void open_map(t_data *data)
 
 void get_malloc_size(t_data *data)
 {
-	int len;
 	char *read;
 	
 	read = get_next_line(data->map.fd);
@@ -37,17 +36,16 @@ void get_malloc_size(t_data *data)
 		exit_message(EMPTY);
 	else if (ft_strlen(read) == 1)
 		exit_message(INV);
-	printf("%s",read);
+	// printf("%s",read);
 	data->map.x = ft_strlen(read) - 1;
 	while(read != NULL)
 	{
 		data->map.y += 1;
 		free(read);
 		read = get_next_line(data->map.fd);
-		len = ft_strlen(read) - 1;
 		if (read == NULL || read[1] == '\n')
 			break ;
-		printf("%s",read);
+		// printf("%s",read);
 	}
 	free(read);
 	close(data->map.fd);
@@ -67,13 +65,13 @@ void parse_map(t_data *data)
 	{
 		data->map.layout[i] = get_next_line(data->map.fd);
 		// get_info_map(i, data);
-		printf("%s",data->map.layout[i]);
+		// printf("%s",data->map.layout[i]);
 		i++;
 	}
 	data->map.layout[i] = NULL;
 	printf("Apres parsing : \n");
 	i = 0;
-	while (i < data->map.y)
+	while (data->map.layout[i] != NULL)
 	{
 		printf("%s",data->map.layout[i]);
 		i++;

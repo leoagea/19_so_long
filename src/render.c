@@ -6,7 +6,7 @@
 /*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 23:32:36 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/26 00:26:31 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/26 22:10:25 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,38 +64,41 @@ void place_map(t_data *data)
 	count = 0;
 	y = 0;
 	printf("x : %d, y : %d",data->map.x, data->map.y);
-	while (y < (data->map.y * PIXEL))
+	while (y < (data->map.y ))
 	{
 		printf("test\n");
 		x = 0;
-		while (x < (data->map.x * PIXEL))
+		while (x < (data->map.x ))
 		{
 			printf("test 0, %d\n",count++);
+			printf("char : %c\n",data->map.layout[y][x]);
 			place_items(data, x, y);
-			x+=PIXEL;
+			x++;
 		}
-		y+= PIXEL;
+		y++;
 	}
 }
 
 void place_items(t_data *data, int x, int y)
 {
-	if (data->map.layout && data->map.layout[x / PIXEL][y / PIXEL] == '1')
+	if (data->map.layout && data->map.layout[x ][y ] == '1')
 	{
-		printf("test 1\n");
-		render_xpm(data, data->xpm.wall, x, y);
+		printf("wall\n");
+		render_xpm(data, data->xpm.wall, x * PIXEL, y * PIXEL);
 	}
-	else if (data->map.layout && data->map.layout[x / PIXEL][y / PIXEL] == '0')
+	else if (data->map.layout && data->map.layout[x ][y ] == '0')
 	{
-		printf("test 2\n");
-		render_xpm(data, data->xpm.ground, x, y);
+		printf("ground\n");
+		render_xpm(data, data->xpm.ground, x* PIXEL, y* PIXEL);
 	}
-	else if (data->map.layout && data->map.layout[x / PIXEL][y / PIXEL] == 'C')
-		render_xpm(data, data->xpm.coin, x, y);
-	else if (data->map.layout && data->map.layout[x / PIXEL][y / PIXEL] == 'P')
-		render_xpm(data, data->xpm.player, x, y);
-	else if (data->map.layout && data->map.layout[x / PIXEL][y / PIXEL] == 'E')
-		render_xpm(data, data->xpm.ladder, x, y);
-	else if (data->map.layout && data->map.layout[x / PIXEL][y / PIXEL] == 'X')
-		render_xpm(data, data->xpm.ennemy, x, y);
+	else if (data->map.layout && data->map.layout[x ][y ] == 'C')
+		render_xpm(data, data->xpm.coin, x* PIXEL, y* PIXEL);
+	else if (data->map.layout && data->map.layout[x ][y ] == 'P')
+		render_xpm(data, data->xpm.player, x* PIXEL, y* PIXEL);
+	else if (data->map.layout && data->map.layout[x ][y ] == 'E')
+		render_xpm(data, data->xpm.ladder, x* PIXEL, y* PIXEL);
+	else if (data->map.layout && data->map.layout[x ][y ] == 'X')
+		render_xpm(data, data->xpm.ennemy, x* PIXEL, y* PIXEL);
+	else
+		return ;
 }

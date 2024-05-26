@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
+/*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:04:03 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/25 18:01:52 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/25 22:05:42 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define NOT_RECT "Map is not rectangular"
 # define NOT_BER "Map file is not a .ber file"
 # define INV "Map is invalid"
-# define PIXEL 128
+# define PIXEL 32
 # define A 0
 # define S 1
 # define D 2
@@ -76,7 +76,12 @@ typedef struct s_mlx
 
 typedef struct s_xpm
 {
-	void *test;
+	void *coin;
+	void *wall;
+	void *ennemy;
+	void *ground;
+	void *player;
+	void *ladder;
 	
 }				t_xpm;
 
@@ -111,7 +116,9 @@ void			exit_message(char *str);
 
 void			render_map(t_data *data);
 void load_xpm(t_data *data);
-void render_xpm(t_data *data);
+void render_xpm(t_data *data, void *xpm, int x, int y);
+void place_map(t_data *data);
+void place_items(t_data *data, int x, int y);
 
 /*====================Events====================*/
 /*--------------------Events--------------------*/
