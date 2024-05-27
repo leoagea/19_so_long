@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
+/*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:04:03 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/27 18:51:50 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/27 23:08:03 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@
 # define S 1
 # define D 2
 # define W 13
+# define AR_R 124
+# define AR_L 123
+# define AR_U 126
+# define AR_D 125
 # define ESC 53
 # define KeyPress 02
 # define DestroyNotify 17
@@ -47,6 +51,7 @@ typedef struct s_exit
 
 typedef struct s_collec
 {
+	int			game;
 	int			count;
 }				t_collec;
 
@@ -84,7 +89,7 @@ typedef struct s_xpm
 	void *ground_3;
 	void *player;
 	void *ladder;
-	
+	void *trapdoor;
 	
 }				t_xpm;
 
@@ -128,5 +133,6 @@ void place_items(t_data *data, int x, int y);
 
 int when_destroy(t_data *data);
 int when_keypress(int keysym, t_data *data);
+void move(t_data *data, int x, int y);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:35:54 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/26 00:30:34 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/27 21:34:03 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void parse_map(t_data *data)
 	while (i < data->map.y)
 	{
 		data->map.layout[i] = get_next_line(data->map.fd);
-		// get_info_map(i, data);
+		get_info_map(i, data);
 		// printf("%s",data->map.layout[i]);
 		i++;
 	}
@@ -93,14 +93,14 @@ void get_info_map(int i, t_data *data)
 	int j;
 
 	j = 0;
-	while (data->map.layout[i])
+	while (data->map.layout[i][j])
 	{
 		if (data->map.layout[i][j] == 'C')
 			data->collec.count++;
 		else if (data->map.layout[i][j] == 'P')
 		{
 			data->player.x = j;
-			data->player.y = i;
+			data->player.y = i + 1;
 			data->player.count++;
 		}
 		else if (data->map.layout[i][j] == 'E')
@@ -113,7 +113,4 @@ void get_info_map(int i, t_data *data)
 			data->ennemy.count++;
 		j++;
 	}	
-
-	// (void)data;
-	// (void)i;
 }

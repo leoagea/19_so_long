@@ -6,7 +6,7 @@
 /*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:05:48 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/25 23:16:17 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/27 22:38:51 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void init_data(t_data *data)
 	data->exit.x = 0;
 	data->exit.y = 0;
 	data->exit.count = 0;
+	data->collec.game = 0;
 	data->collec.count = 0;
 	data->ennemy.count = 0;
 }
