@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
+/*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 23:32:36 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/27 18:55:57 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/27 22:53:13 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,13 @@ void load_xpm(t_data *data)
 {
 	int x;
 	int y;
-	data->xpm.player = mlx_xpm_file_to_image(data->mlx.mlx, "assets_24x24/player.xpm", &x, &y);
+	data->xpm.wall = mlx_xpm_file_to_image(data->mlx.mlx, "assets_24x24/wall.xpm", &x, &y);
 	data->xpm.coin = mlx_xpm_file_to_image(data->mlx.mlx, "assets_24x24/coin.xpm", &x, &y);
+	data->xpm.player = mlx_xpm_file_to_image(data->mlx.mlx, "assets_24x24/player.xpm", &x, &y);
 	data->xpm.ennemy = mlx_xpm_file_to_image(data->mlx.mlx, "assets_24x24/ennemy.xpm", &x, &y);
 	data->xpm.ground = mlx_xpm_file_to_image(data->mlx.mlx, "assets_24x24/ground.xpm", &x, &y);
 	data->xpm.ladder = mlx_xpm_file_to_image(data->mlx.mlx, "assets_24x24/ladder.xpm", &x, &y);
-	data->xpm.wall = mlx_xpm_file_to_image(data->mlx.mlx, "assets_24x24/wall.xpm", &x, &y);
+	data->xpm.trapdoor = mlx_xpm_file_to_image(data->mlx.mlx, "assets_24x24/trapdoor.xpm", &x, &y);
 	// data->xpm.ground_2 = mlx_xpm_file_to_image(data->mlx.mlx, "assets_32_32/wall.xpm", &x, &y);
 	// data->xpm.ground_3 = mlx_xpm_file_to_image(data->mlx.mlx, "assets/ground.xpm", &x, &y);
 	// render_xpm(data, data->xpm.player, 0, 0);
@@ -63,24 +64,26 @@ void place_map(t_data *data)
 {
 	int x;
 	int y;
-	int count;
+	// int count;
 
-	count = 0;
+	// count = 0;
 	y = 0;
-	printf("x : %d, y : %d",data->map.x, data->map.y);
+	printf("\nx : %d, y : %d",data->map.x, data->map.y);
 	while (y < (data->map.y ))
 	{
-		printf("test\n");
+		// printf("test\n");
 		x = 0;
 		while (x < (data->map.x ))
 		{
 			// printf("test 0, %d\n",count++);
-			printf("x : %d, y : %d, char : %c\n", x, y,data->map.layout[y][x]);
+			// printf("x : %d, y : %d, char : %c\n", x, y,data->map.layout[y][x]);
 			place_items(data, x, y);
 		x++;
 		}
 		y++;
 	}
+	printf("\nplayer x : %d, y : %d\n", data->player.x, data->player.y);
+	printf("collectable : %d , exit : %d , player : %d\n", data->collec.count, data->exit.count, data->player.count);
 }
 
 void place_items(t_data *data, int x, int y)
@@ -89,10 +92,10 @@ void place_items(t_data *data, int x, int y)
 	{
 		render_xpm(data, data->xpm.wall, x * PIXEL, y * PIXEL);
 	}
-	else if (data->map.layout && data->map.layout[y ][x ] == '0')
-	{
-		render_xpm(data, data->xpm.ground, x* PIXEL, y* PIXEL);
-	}
+	// else if (data->map.layout && data->map.layout[y ][x ] == '0')
+	// {
+	// 	render_xpm(data, data->xpm.ground, x* PIXEL, y* PIXEL);
+	// }
 	else if (data->map.layout && data->map.layout[y ][x ] == 'C')
 	{
 		render_xpm(data, data->xpm.ground, x* PIXEL, y* PIXEL);
@@ -105,8 +108,7 @@ void place_items(t_data *data, int x, int y)
 	}
 	else if (data->map.layout && data->map.layout[y ][x ] == 'E')
 	{
-		render_xpm(data, data->xpm.ground, x* PIXEL, y* PIXEL);
-		render_xpm(data, data->xpm.ladder, x* PIXEL, y* PIXEL);
+		render_xpm(data, data->xpm.trapdoor, x* PIXEL, y* PIXEL);
 	}
 	else if (data->map.layout && data->map.layout[y ][x ] == 'X')
 	{
