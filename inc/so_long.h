@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:04:03 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/25 22:05:42 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/27 18:51:50 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define NOT_RECT "Map is not rectangular"
 # define NOT_BER "Map file is not a .ber file"
 # define INV "Map is invalid"
-# define PIXEL 32
+# define PIXEL 24
 # define A 0
 # define S 1
 # define D 2
@@ -80,8 +80,11 @@ typedef struct s_xpm
 	void *wall;
 	void *ennemy;
 	void *ground;
+	void *ground_2;
+	void *ground_3;
 	void *player;
 	void *ladder;
+	
 	
 }				t_xpm;
 
