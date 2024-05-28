@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:04:03 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/28 14:22:29 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/28 16:30:00 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ void			open_map(t_data *data);
 void			get_malloc_size(t_data *data);
 void			parse_map(t_data *data);
 void			get_info_map(int i, t_data *data);
+void			print_moves(t_data *data);
 
 /*=====================EXIT=====================*/
 /*---------------------exit---------------------*/
@@ -127,6 +128,7 @@ void load_xpm(t_data *data);
 void render_xpm(t_data *data, void *xpm, int x, int y);
 void place_map(t_data *data);
 void place_items(t_data *data, int x, int y);
+void place_background_text(t_data *data);
 
 /*====================Events====================*/
 /*--------------------Events--------------------*/
