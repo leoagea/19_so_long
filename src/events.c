@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 17:46:38 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/28 17:59:36 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/28 18:29:39 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,28 +22,16 @@ int when_destroy(t_data *data)
 
 int when_keypress(int keysym, t_data *data)
 {
-	data->count++;
-	render_xpm(data, data->xpm.ground, data->player.x * PIXEL, (data->player.y + 2) * PIXEL);
 	if (keysym == ESC)
 		when_destroy(data);
 	else if (keysym == W || keysym == AR_U)
-	{
-		if (move(data, (data->player.x), (data->player.y - 1)) == 0)
-			render_xpm(data, data->xpm.player, (data->player.x) * PIXEL, (data->player.y + 2) * PIXEL);
-	}
+		move(data, (data->player.x), (data->player.y - 1));
 	else if (keysym == D || keysym == AR_R)
-	{
-		if (move(data, (data->player.x + 1), (data->player.y)) == 0)
-			render_xpm(data, data->xpm.player, (data->player.x) * PIXEL, (data->player.y + 2) * PIXEL);
-	}
+		move(data, (data->player.x + 1), (data->player.y));
 	else if (keysym == A || keysym == AR_L)
-	{
-		if (move(data, (data->player.x - 1), (data->player.y)) == 0)
-			render_xpm(data, data->xpm.player, (data->player.x) * PIXEL, (data->player.y + 2) * PIXEL);
-	}
+		move(data, (data->player.x - 1), (data->player.y));
 	else if (keysym == S || keysym == AR_D)
-		if (move(data, (data->player.x), (data->player.y + 1)) == 0)
-			render_xpm(data, data->xpm.player, (data->player.x) * PIXEL, (data->player.y + 2) * PIXEL);
+		move(data, (data->player.x), (data->player.y + 1));
 	place_background_text(data);
 	return (1);
 }
@@ -63,8 +51,9 @@ int move(t_data *data, int x, int y)
 		data->collec.game++;
 		data->map.layout[y][x] = '0';
 	}
-	render_xpm(data, data->xpm.ground, x * PIXEL, (y + 2) * PIXEL);
+	render_xpm(data, data->xpm.ground, data->player.x * PIXEL, (data->player.y + 2) * PIXEL);
 	render_xpm(data, data->xpm.player, x * PIXEL, (y + 2) * PIXEL);
+	data->count++;
 	if (data->collec.game == data->collec.count)
 	{
 		render_xpm(data, data->xpm.ground, data->exit.x * PIXEL, (data->exit.y + 2)* PIXEL);
