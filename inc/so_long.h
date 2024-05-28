@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
+/*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:04:03 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/28 16:30:00 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/29 00:08:22 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,13 @@ typedef struct s_map
 
 }				t_map;
 
+typedef struct s_cpmap
+{
+	int exit;
+	int count;
+	char **map;
+}				t_cpmap;
+
 typedef struct s_mlx
 {
 	void		*mlx;
@@ -99,6 +106,7 @@ typedef struct s_data
 	t_mlx		mlx;
 	t_xpm		xpm;
 	t_exit		exit;
+	t_cpmap		cpmap;
 	t_player	player;
 	t_ennemy	ennemy;
 	t_collec	collec;
@@ -136,5 +144,13 @@ void place_background_text(t_data *data);
 int when_destroy(t_data *data);
 int when_keypress(int keysym, t_data *data);
 int move(t_data *data, int x, int y);
+
+/*=====================Check====================*/
+/*---------------------Check--------------------*/
+
+int free_map(t_data *data, int y);
+int backtrack_map(t_data *data, int x, int y);
+int cpy_map(t_data *data);
+int checker_map(t_data *data);
 
 #endif
