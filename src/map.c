@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:35:54 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/27 21:34:03 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/28 17:23:13 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,10 @@ void parse_map(t_data *data)
 		printf("%s",data->map.layout[i]);
 		i++;
 	}
-	// printf("Player, count : %d, x : %d, y : %d\n",data->player.count, data->player.x, data->player.y);
-	// printf("Exit, count : %d, x : %d, y : %d\n",data->exit.count, data->exit.x, data->exit.y);
-	// printf("Nbr collec : %d\n",data->collec.count);
-	// printf("Nbr ennemy : %d\n",data->ennemy.count);
+	printf("\nPlayer, count : %d, x : %d, y : %d\n",data->player.count, data->player.x, data->player.y);
+	printf("Exit, count : %d, x : %d, y : %d\n",data->exit.count, data->exit.x, data->exit.y);
+	printf("Nbr collec : %d\n",data->collec.count);
+	printf("Nbr ennemy : %d\n",data->ennemy.count);
 }
 
 void get_info_map(int i, t_data *data)
@@ -100,7 +100,7 @@ void get_info_map(int i, t_data *data)
 		else if (data->map.layout[i][j] == 'P')
 		{
 			data->player.x = j;
-			data->player.y = i + 1;
+			data->player.y = i;
 			data->player.count++;
 		}
 		else if (data->map.layout[i][j] == 'E')
@@ -113,4 +113,18 @@ void get_info_map(int i, t_data *data)
 			data->ennemy.count++;
 		j++;
 	}	
+}
+
+
+void print_moves(t_data *data)
+{
+	char *count;
+
+	count = ft_itoa(data->count);
+	render_xpm(data, data->xpm.ground, 4 * PIXEL, 0 * PIXEL);
+	render_xpm(data, data->xpm.ground, 5 * PIXEL, 0 * PIXEL);
+	mlx_string_put(data->mlx.mlx, data->mlx.win, 80, 0, 12895487, count);
+	free(count);
+	printf("Moves : %d\n", data->count);
+	// printf("Key pressed : %d\n",keysym);
 }
