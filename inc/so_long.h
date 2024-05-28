@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:04:03 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/27 23:08:03 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/28 14:22:29 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,6 @@ void place_items(t_data *data, int x, int y);
 
 int when_destroy(t_data *data);
 int when_keypress(int keysym, t_data *data);
-void move(t_data *data, int x, int y);
+int move(t_data *data, int x, int y);
 
 #endif
