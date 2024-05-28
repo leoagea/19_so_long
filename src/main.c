@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
+/*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:05:48 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/28 12:54:32 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/29 00:08:50 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ int	main(int ac, char **av)
 	init_data(&data);
 	// data.map.path = "maps/map_test.ber";
 	open_map(&data);
+	
+	printf("\nbool : %d\n",checker_map(&data));
+	
 	render_map(&data);
 	
 	// system("leaks so_long");
