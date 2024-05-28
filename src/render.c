@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 23:32:36 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/27 22:53:13 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/28 14:24:59 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,13 +92,13 @@ void place_items(t_data *data, int x, int y)
 	{
 		render_xpm(data, data->xpm.wall, x * PIXEL, y * PIXEL);
 	}
-	// else if (data->map.layout && data->map.layout[y ][x ] == '0')
-	// {
-	// 	render_xpm(data, data->xpm.ground, x* PIXEL, y* PIXEL);
-	// }
-	else if (data->map.layout && data->map.layout[y ][x ] == 'C')
+	else if (data->map.layout && data->map.layout[y ][x ] == '0')
 	{
 		render_xpm(data, data->xpm.ground, x* PIXEL, y* PIXEL);
+	}
+	else if (data->map.layout && data->map.layout[y ][x ] == 'C')
+	{
+		// render_xpm(data, data->xpm.ground, x* PIXEL, y* PIXEL);
 		render_xpm(data, data->xpm.coin, x* PIXEL, y* PIXEL);
 	}
 	else if (data->map.layout && data->map.layout[y ][x ] == 'P')
