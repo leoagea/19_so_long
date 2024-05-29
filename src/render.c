@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 23:32:36 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/28 18:30:03 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/29 18:10:38 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void render_map(t_data *data)
 	mlx_do_sync(data->mlx.mlx);
 	mlx_hook(data->mlx.win,KeyPress,KeyPressMask,&when_keypress,data);
 	mlx_hook(data->mlx.win, DestroyNotify, 0, &when_destroy, data);
-	load_xpm(data);
+	if (load_xpm(data) == NULL)
+		when_destroy(data);
 	place_map(data);
 	mlx_loop(data->mlx.mlx);
 }
@@ -37,22 +38,27 @@ void load_xpm(t_data *data)
 	int x;
 	int y;
 	data->xpm.wall = mlx_xpm_file_to_image(data->mlx.mlx, "assets_24x24/wall.xpm", &x, &y);
+	// if (!data->xpm.wall)
+	// 	return data->xpm.wall = NULL;
 	data->xpm.coin = mlx_xpm_file_to_image(data->mlx.mlx, "assets_24x24/coin.xpm", &x, &y);
+	// if (!data->xpm.wall)
+	// 	return data->xpm.wall = NULL;
 	data->xpm.player = mlx_xpm_file_to_image(data->mlx.mlx, "assets_24x24/player.xpm", &x, &y);
+	// if (!data->xpm.wall)
+	// 	return data->xpm.wall = NULL;
 	data->xpm.ennemy = mlx_xpm_file_to_image(data->mlx.mlx, "assets_24x24/ennemy.xpm", &x, &y);
+	// if (!data->xpm.wall)
+	// 	return data->xpm.wall = NULL;
 	data->xpm.ground = mlx_xpm_file_to_image(data->mlx.mlx, "assets_24x24/ground.xpm", &x, &y);
+	// if (!data->xpm.wall)
+	// 	return data->xpm.wall = NULL;
 	data->xpm.ladder = mlx_xpm_file_to_image(data->mlx.mlx, "assets_24x24/ladder.xpm", &x, &y);
+	// if (!data->xpm.wall)
+	// 	return data->xpm.wall = NULL;
 	data->xpm.trapdoor = mlx_xpm_file_to_image(data->mlx.mlx, "assets_24x24/trapdoor.xpm", &x, &y);
-	// data->xpm.ground_2 = mlx_xpm_file_to_image(data->mlx.mlx, "assets_32_32/wall.xpm", &x, &y);
-	// data->xpm.ground_3 = mlx_xpm_file_to_image(data->mlx.mlx, "assets/ground.xpm", &x, &y);
-	// render_xpm(data, data->xpm.player, 0, 0);
-	// render_xpm(data, data->xpm.ground_2, 0, 32); 
-	// render_xpm(data, data->xpm.ground_3, 0, 64);
-	// render_xpm(data, data->xpm.ladder, 64, 0);
-	// render_xpm(data, data->xpm.ground, 64, 64);
-	// // render_xpm(data, data->xpm.ground_2, 96, 64);
-	// render_xpm(data, data->xpm.ground_3, 100, 64);
-	// render_xpm(data, data->xpm.wall, 130, 64);
+	// if (!data->xpm.wall)
+	// 	return data->xpm.wall = NULL;
+	// return (void *)x;
 }
 
 void render_xpm(t_data *data, void *xpm, int x, int y)

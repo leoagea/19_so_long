@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:04:03 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/29 17:06:52 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/29 18:10:33 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ void			get_info_map(int i, t_data *data);
 
 int free_map(t_data *data, int y);
 void			exit_message(char *str);
+void destroy_image(t_data *data);
 
 /*====================RENDER====================*/
 /*--------------------RENDER--------------------*/

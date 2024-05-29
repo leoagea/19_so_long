@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 20:07:03 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/29 14:29:23 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/29 17:21:33 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,24 @@ int free_map(t_data *data, int y)
     }
     free(data->cpmap.map);
     return -1;
+}
+
+void destroy_image(t_data *data)
+{
+    if (data->xpm.coin)
+        mlx_destroy_image(data->mlx.mlx, data->xpm.coin);
+    if (data->xpm.ennemy)
+        mlx_destroy_image(data->mlx.mlx, data->xpm.ennemy);
+    if (data->xpm.ground)
+        mlx_destroy_image(data->mlx.mlx, data->xpm.ground);
+    if (data->xpm.ladder)
+        mlx_destroy_image(data->mlx.mlx, data->xpm.ladder);
+    if (data->xpm.player)
+        mlx_destroy_image(data->mlx.mlx, data->xpm.player);
+    if (data->xpm.trapdoor)
+        mlx_destroy_image(data->mlx.mlx, data->xpm.trapdoor);
+    if (data->xpm.wall)
+        mlx_destroy_image(data->mlx.mlx, data->xpm.wall);    
 }
 
 void exit_message(char *str)
