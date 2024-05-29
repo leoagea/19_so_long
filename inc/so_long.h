@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:04:03 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/29 12:38:34 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/29 12:54:29 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define NOT_RECT "Map is not rectangular"
 # define NOT_BER "Map file is not a .ber file"
 # define INV "Map is invalid"
+# define BORD "Border are invalid"
 # define PIXEL 24
 # define A 0
 # define S 1
@@ -150,6 +151,7 @@ int move(t_data *data, int x, int y);
 int free_map(t_data *data, int y);
 int backtrack_map(t_data *data, int x, int y);
 int cpy_map(t_data *data);
+int check_border(t_data *data);
 int checker_map(t_data *data);
 
 #endif

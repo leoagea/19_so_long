@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 22:50:54 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/29 12:32:52 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/29 13:55:43 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int free_map(t_data *data, int y)
         i++;
     }
     free(data->cpmap.map);
-    return 1;
+    return -1;
 }
 
 int backtrack_map(t_data *data, int x, int y)
@@ -80,13 +80,42 @@ int cpy_map(t_data *data)
     return 1;
 }
 
+int check_border(t_data *data)
+{
+    int i;
+
+    i = -1;
+    while (++i < data->map.x)
+        if (data->cpmap.map[0][i] != '1' && data->cpmap.map[0])
+            return -1;
+    i = -1;
+    while (++i < data->map.x)
+        if (data->cpmap.map[data->map.y - 1][i] != '1' && data->cpmap.map[data->map.y - 1])
+            return -1;
+    i = -1;
+    while (++i < data->map.y)
+        if (data->cpmap.map[i][0] != '1' && data->cpmap.map[i])
+            return -1;
+    i = -1;
+    while (++i < data->map.y)
+        if (data->cpmap.map[i][data->map.x - 1] != '1' && data->cpmap.map[i])
+            return -1;
+    return 1;
+}
+
 int checker_map(t_data *data)
 {
-    if (cpy_map(data) == 0)
+    if (cpy_map(data) == -1)
         return -1;
-    printf("collec : %d, exit : %d\n",data->cpmap.count, data->cpmap.exit);
+    if (check_border(data) == -1)
+    {
+        free_map(data,data->map.y);
+        exit_message(BORD);
+    }
+    // printf("Check border : %d\n",check_border(data));
+    // printf("collec : %d, exit : %d\n",data->cpmap.count, data->cpmap.exit);
     backtrack_map(data, data->player.x, data->player.y);
-    printf("collec : %d, exit : %d\n",data->cpmap.count, data->cpmap.exit);
+    // printf("collec : %d, exit : %d\n",data->cpmap.count, data->cpmap.exit);
     free_map(data, data->map.y);
     if (data->cpmap.count != data->collec.count || data->cpmap.exit != 1)
         return -1;
