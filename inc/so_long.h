@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:04:03 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/29 14:32:29 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/29 17:06:52 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define NOT_BER "Map file is not a .ber file"
 # define INV "Map is invalid"
 # define BORD "Border are invalid"
+# define INV_SIZE "Map is too big"
 # define PIXEL 24
 # define A 0
 # define S 1

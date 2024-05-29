@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 22:50:54 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/29 14:37:47 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/29 17:07:00 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ int checker_map(t_data *data)
         free_map(data,data->map.y);
         exit_message(BORD);
     }
+    checker_size(data);
     // printf("Check border : %d\n",check_border(data));
     // printf("collec : %d, exit : %d\n",data->cpmap.count, data->cpmap.exit);
     backtrack_map(data, data->player.x, data->player.y);
@@ -113,12 +114,20 @@ void checker_size(t_data *data)
 {
     int i;
     int len;
+    int line;
 
     i = 0;
+    line = 0;
+    while (data->cpmap.map[line] != NULL)
+        line++;
+    printf("line : %d\n",line);
+    len = ft_strlen(data->map.layout[0]) - 1;
+    if (line > 50 || len > 100)
+        exit_message(INV_SIZE);
     while (i < data->map.y - 1)
     {
         len = ft_strlen(data->map.layout[i]) - 1;
-        printf("len from strlen : %d, map.x : %d\n",len , data->map.x);
+        // printf("len from strlen : %d, map.x : %d\n",len , data->map.x);
         if (len != data->map.x)
             exit_message(NOT_RECT);
         i++;
