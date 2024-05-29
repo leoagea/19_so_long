@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 22:50:54 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/29 00:09:34 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/29 12:32:52 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,11 @@ int free_map(t_data *data, int y)
 
 int backtrack_map(t_data *data, int x, int y)
 {
-    if (x > 0 && x < data->map.x && y > data->map.y)
+    // printf("x : %d, data.map.x : %d\n",x, data->map.x);
+    // printf("y : %d, data.map.y : %d\n",y, data->map.y);
+    if (x > 0 && x < data->map.x && y < data->map.y && y > 0)
     {
+        // printf("test\n"); 
         if (data->cpmap.map[y][x] == '1' || data->cpmap.map[y][x] == 'X' || data->cpmap.map[y][x] == 'V')
             return 1;
         if (data->cpmap.map[y][x] == '0' || data->cpmap.map[y][x] == 'P')
@@ -81,7 +84,9 @@ int checker_map(t_data *data)
 {
     if (cpy_map(data) == 0)
         return -1;
+    printf("collec : %d, exit : %d\n",data->cpmap.count, data->cpmap.exit);
     backtrack_map(data, data->player.x, data->player.y);
+    printf("collec : %d, exit : %d\n",data->cpmap.count, data->cpmap.exit);
     free_map(data, data->map.y);
     if (data->cpmap.count != data->collec.count || data->cpmap.exit != 1)
         return -1;
