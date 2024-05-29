@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 22:50:54 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/29 14:29:36 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/29 14:37:47 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ int checker_map(t_data *data)
 {
     if (cpy_map(data) == -1)
         return -1;
+    // checker_size(data);
     if (check_border(data) == -1)
     {
         free_map(data,data->map.y);
@@ -106,4 +107,20 @@ int checker_map(t_data *data)
     if (data->cpmap.count != data->collec.count || data->cpmap.exit != 1)
         return -1;
     return 1;
+}
+
+void checker_size(t_data *data)
+{
+    int i;
+    int len;
+
+    i = 0;
+    while (i < data->map.y - 1)
+    {
+        len = ft_strlen(data->map.layout[i]) - 1;
+        printf("len from strlen : %d, map.x : %d\n",len , data->map.x);
+        if (len != data->map.x)
+            exit_message(NOT_RECT);
+        i++;
+    }
 }

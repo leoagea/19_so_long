@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:04:03 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/29 14:29:32 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/29 14:32:29 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,5 +153,6 @@ int backtrack_map(t_data *data, int x, int y);
 int cpy_map(t_data *data);
 int check_border(t_data *data);
 int checker_map(t_data *data);
+void checker_size(t_data *data);
 
 #endif
