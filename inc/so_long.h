@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:04:03 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/29 12:54:29 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/29 14:29:32 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ void			get_info_map(int i, t_data *data);
 /*=====================EXIT=====================*/
 /*---------------------exit---------------------*/
 
+int free_map(t_data *data, int y);
 void			exit_message(char *str);
 
 /*====================RENDER====================*/
@@ -148,7 +149,6 @@ int move(t_data *data, int x, int y);
 /*=====================Check====================*/
 /*---------------------Check--------------------*/
 
-int free_map(t_data *data, int y);
 int backtrack_map(t_data *data, int x, int y);
 int cpy_map(t_data *data);
 int check_border(t_data *data);

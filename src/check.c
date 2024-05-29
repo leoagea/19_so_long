@@ -6,25 +6,11 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 22:50:54 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/29 13:55:43 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/29 14:29:36 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/so_long.h"
-
-int free_map(t_data *data, int y)
-{
-    int i;
-
-    i = 0;
-    while (i < y)
-    {
-        free(data->cpmap.map[i]);
-        i++;
-    }
-    free(data->cpmap.map);
-    return -1;
-}
 
 int backtrack_map(t_data *data, int x, int y)
 {
