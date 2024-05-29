@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:04:03 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/29 00:08:22 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/29 12:38:34 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,6 @@ void			open_map(t_data *data);
 void			get_malloc_size(t_data *data);
 void			parse_map(t_data *data);
 void			get_info_map(int i, t_data *data);
-void			print_moves(t_data *data);
 
 /*=====================EXIT=====================*/
 /*---------------------exit---------------------*/

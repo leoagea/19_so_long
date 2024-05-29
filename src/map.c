@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:35:54 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/28 17:23:13 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/29 12:38:30 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,18 +113,4 @@ void get_info_map(int i, t_data *data)
 			data->ennemy.count++;
 		j++;
 	}	
-}
-
-
-void print_moves(t_data *data)
-{
-	char *count;
-
-	count = ft_itoa(data->count);
-	render_xpm(data, data->xpm.ground, 4 * PIXEL, 0 * PIXEL);
-	render_xpm(data, data->xpm.ground, 5 * PIXEL, 0 * PIXEL);
-	mlx_string_put(data->mlx.mlx, data->mlx.win, 80, 0, 12895487, count);
-	free(count);
-	printf("Moves : %d\n", data->count);
-	// printf("Key pressed : %d\n",keysym);
 }
