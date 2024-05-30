@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lagea < lagea@student.s19.be >             +#+  +:+       +#+         #
+#    By: lagea <lagea@student.s19.be>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/06 01:08:23 by lagea             #+#    #+#              #
-#    Updated: 2024/05/25 22:25:30 by lagea            ###   ########.fr        #
+#    Updated: 2024/05/30 17:43:44 by lagea            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,12 @@ ORANGE=\033[38;2;255;165;0m
 NC=\033[0m 
 
 NAME		= so_long
+BONUS		= so_long_bonus
 
 SRC_DIR		= src/
+BONUS_DIR	= bonus/
 OBJ_DIR		= obj/
+OBJB_DIR	= obj_bonus/
 INC_DIR		= inc/
 #EXIT_DIR	= src/exit/
 #PARSER_DIR	= src/parser/
@@ -31,6 +34,8 @@ INC_DIR		= inc/
 #RENDER		= $(wildcard $(RENDER_DIR)*.c)
 SRC 		= $(wildcard $(SRC_DIR)*.c)  #$(MAP) $(EXIT) $(RENDER)
 OBJ			= $(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
+SRCB		= bonus/main_bonus.c bonus/anim_bonus.c bonus/render_bonus.c src/check.c src/events.c src/exit.c  src/map.c 
+OBJB		= $(SRCB:$(BONUS_DIR)%.c=$(OBJB_DIR)%.o)
 
 LIBFT 		= lib/libft.a
 LIBFT_PATH 	= libft/
@@ -51,19 +56,29 @@ define progress_bar_push_swap
 endef
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
-	@mkdir -p $(OBJ_DIR)/parser
-	@mkdir -p $(OBJ_DIR)/exit
-	@mkdir -p $(OBJ_DIR)/render
+	@mkdir -p $(OBJ_DIR)
 	@$(CC) $(C_FLAGS) $(INCS) -Imlx -c $< -g -o $@
 	$(call progress_bar_push_swap)
 
+$(OBJB_DIR)%.o: $(BONUS_DIR)%.c
+	mkdir -p $(OBJB_DIR)
+	$(CC) $(C_FLAGS) $(INCS) -Imlx -c $< -g -o $@
+	$(call progress_bar_push_swap)
+
 all: $(LIBFT) $(NAME)
+
+bonus : $(BONUS)
 
 $(NAME): $(OBJ)
 	@echo "$(GREEN)Linking objects to create executable...$(NC)"
 	@$(CC) $(OBJ) -Llib/ -lft $(MLX) -g -o $(NAME)
 	@echo "$(BLUE)Executable $(NAME) created!$(NC)"
 
+$(BONUS):$(LIBFT) $(OBJB)
+	@echo "$(GREEN)Linking objects to create executable...$(NC)"
+	$(CC) $(OBJB) -Llib/ -lft $(MLX) -g -o $(BONUS)
+	@echo "$(BLUE)Executable $(NAME) created!$(NC)"
+	
 $(LIBFT):
 	@echo "$(YELLOW)Compiling Libft...$(NC)"
 	@$(MAKE) -C $(LIBFT_PATH)
