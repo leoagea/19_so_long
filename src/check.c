@@ -6,11 +6,11 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 22:50:54 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/29 17:07:00 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/30 18:23:57 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/so_long.h"
+#include "../inc/so_long.h"
 
 int backtrack_map(t_data *data, int x, int y)
 {
@@ -105,7 +105,7 @@ int checker_map(t_data *data)
     backtrack_map(data, data->player.x, data->player.y);
     // printf("collec : %d, exit : %d\n",data->cpmap.count, data->cpmap.exit);
     free_map(data, data->map.y);
-    if (data->cpmap.count != data->collec.count || data->cpmap.exit != 1)
+    if (data->cpmap.count != data->collec.count || data->cpmap.exit != 1 || data->player.count != 1)
         return -1;
     return 1;
 }
