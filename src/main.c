@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:05:48 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/29 12:25:09 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/30 18:25:30 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,9 @@ int	main(int ac, char **av)
 	// data.map.path = "maps/map_test.ber";
 	open_map(&data);
 	
-	printf("\nbool : %d\n",checker_map(&data));
+	// printf("\nbool : %d\n",checker_map(&data));
+	if (checker_map(&data) == -1)
+		exit_message(INV);
 	
 	render_map(&data);
 	
