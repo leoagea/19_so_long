@@ -6,11 +6,11 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 17:46:38 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/29 17:39:19 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/30 18:26:44 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/so_long.h"
+#include "../inc/so_long.h"
 
 int when_destroy(t_data *data)
 {
@@ -36,7 +36,7 @@ int when_keypress(int keysym, t_data *data)
 		move(data, (data->player.x), (data->player.y + 1));
 	else
 		return 0;
-	place_background_text(data);
+	// place_background_text(data);
 	return (1);
 }
 
