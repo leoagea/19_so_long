@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:04:03 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/29 18:10:33 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/30 18:18:52 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "libft.h"
 // # include <mlx.h>
-# include "mlx/mlx.h"
+# include "../mlx/mlx.h"
 
 # define EMPTY "Map file is empty"
 # define NOT_RECT "Map is not rectangular"
@@ -23,6 +23,7 @@
 # define INV "Map is invalid"
 # define BORD "Border are invalid"
 # define INV_SIZE "Map is too big"
+# define INV_CHAR "Char in map not valid"
 # define PIXEL 24
 # define A 0
 # define S 1
@@ -55,6 +56,7 @@ typedef struct s_collec
 {
 	int			game;
 	int			count;
+	int anim;
 }				t_collec;
 
 typedef struct s_ennemy
@@ -99,6 +101,9 @@ typedef struct s_xpm
 	void *player;
 	void *ladder;
 	void *trapdoor;
+	void *coin_2;
+	void *coin_3;
+	void *coin_4;
 	
 }				t_xpm;
 
@@ -116,22 +121,20 @@ typedef struct s_data
 
 }				t_data;
 
-/*====================PARSER====================*/
-/*---------------------Map----------------------*/
+/*======================SRC=====================*/
+/*----------------------Map---------------------*/
 
 void			open_map(t_data *data);
 void			get_malloc_size(t_data *data);
 void			parse_map(t_data *data);
 void			get_info_map(int i, t_data *data);
 
-/*=====================EXIT=====================*/
 /*---------------------exit---------------------*/
 
 int free_map(t_data *data, int y);
 void			exit_message(char *str);
 void destroy_image(t_data *data);
 
-/*====================RENDER====================*/
 /*--------------------RENDER--------------------*/
 
 void			render_map(t_data *data);
@@ -141,14 +144,12 @@ void place_map(t_data *data);
 void place_items(t_data *data, int x, int y);
 void place_background_text(t_data *data);
 
-/*====================Events====================*/
 /*--------------------Events--------------------*/
 
 int when_destroy(t_data *data);
 int when_keypress(int keysym, t_data *data);
 int move(t_data *data, int x, int y);
 
-/*=====================Check====================*/
 /*---------------------Check--------------------*/
 
 int backtrack_map(t_data *data, int x, int y);
@@ -156,5 +157,12 @@ int cpy_map(t_data *data);
 int check_border(t_data *data);
 int checker_map(t_data *data);
 void checker_size(t_data *data);
+
+/*=====================BONUS====================*/
+/*---------------------Anim---------------------*/
+
+void anim_coin(t_data *data,int x,int y);
+void anim_loop(t_data *data);
+int anim(t_data *data);
 
 #endif
