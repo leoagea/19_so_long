@@ -6,11 +6,11 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 20:07:03 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/29 17:21:33 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/30 17:44:46 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/so_long.h"
+#include "../inc/so_long.h"
 
 int free_map(t_data *data, int y)
 {
