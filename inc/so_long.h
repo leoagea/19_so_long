@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:04:03 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/31 17:20:53 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/31 20:21:03 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,16 +156,16 @@ int				check_border(t_data *data);
 int				checker_map(t_data *data);
 void			checker_size(t_data *data);
 
+/*----------------------XPM---------------------*/
+
+int				load_xpm(t_data *data);
+int				load_xpm_2(t_data *data, int x, int y);
+
 /*=====================BONUS====================*/
 /*---------------------Anim---------------------*/
 
 void			anim_coin(t_data *data, int x, int y);
 void			anim_loop(t_data *data);
 int				anim(t_data *data);
-
-/*----------------------XPM---------------------*/
-
-int				load_xpm(t_data *data);
-int				load_xpm_2(t_data *data, int x, int y);
 
 #endif
