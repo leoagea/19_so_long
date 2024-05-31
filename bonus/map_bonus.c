@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:35:54 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/31 17:24:17 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/31 18:24:47 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ void	get_info_map(int i, t_data *data)
 {
 	int	j;
 
-	j = 0;
-	while (data->map.layout[i][j])
+	j = -1;
+	while (data->map.layout[i][++j])
 	{
 		if (data->map.layout[i][j] == 'C')
 			data->collec.count++;
@@ -87,6 +87,8 @@ void	get_info_map(int i, t_data *data)
 		}
 		else if (data->map.layout[i][j] == 'X')
 			data->ennemy.count++;
-		j++;
+		else if (data->map.layout[i][j] != '0' && data->map.layout[i][j] != '1'
+			&& data->map.layout[i][j] != '\n')
+			exit_message(INV_CHAR);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 23:32:36 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/31 17:24:59 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/31 18:19:04 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,6 @@ void	place_items(t_data *data, int x, int y)
 		render_xpm(data, data->xpm.ground, x * PIXEL, (y + 2) * PIXEL);
 		render_xpm(data, data->xpm.ennemy, x * PIXEL, (y + 2) * PIXEL);
 	}
-	else
-		exit_message(INV_CHAR);
 }
 
 void	place_background_text(t_data *data)
@@ -102,5 +100,4 @@ void	place_background_text(t_data *data)
 	mlx_string_put(data->mlx.mlx, data->mlx.win, 0, 0, 12895487, "Moves :");
 	mlx_string_put(data->mlx.mlx, data->mlx.win, 80, 0, 12895487, count);
 	free(count);
-	ft_printf("Moves : %d\n", data->count);
 }
