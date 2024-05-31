@@ -6,13 +6,13 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:05:48 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/31 15:27:51 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/31 17:28:35 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-static void init_data(t_data *data)
+static void	init_data(t_data *data)
 {
 	data->map.fd = 0;
 	data->map.x = 0;
@@ -34,18 +34,16 @@ static void init_data(t_data *data)
 
 int	main(int ac, char **av)
 {
-	(void)ac;
-	(void)av;
+	t_data	data;
 
-	t_data data;
-	
 	if (ac == 2)
 		data.map.path = av[1];
+	else
+		exit_message(INV_ARG);
 	init_data(&data);
 	open_map(&data);
 	if (checker_map(&data) == -1)
 		exit_message(INV);
 	render_map(&data);
-	// system("leaks so_long");
-	return 0;
+	return (0);
 }

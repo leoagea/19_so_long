@@ -6,74 +6,73 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 23:32:36 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/31 15:47:13 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/31 17:24:59 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/so_long.h"
 
-void render_map(t_data *data)
+void	render_map(t_data *data)
 {
-	
-    data->mlx.mlx = mlx_init();
+	data->mlx.mlx = mlx_init();
 	if (!data->mlx.mlx)
 		exit(EXIT_FAILURE);
-	data->mlx.win = mlx_new_window(data->mlx.mlx, (data->map.x) * PIXEL, (data->map.y + 2) * PIXEL, "So_long");
+	data->mlx.win = mlx_new_window(data->mlx.mlx, (data->map.x) * PIXEL,
+			(data->map.y + 2) * PIXEL, "So_long");
 	if (!data->mlx.win)
 	{
 		free(data->mlx.mlx);
 		exit(EXIT_FAILURE);
 	}
-	load_xpm(data);
+	if (load_xpm(data) == -1)
+		when_destroy(data);
 	place_map(data);
 	mlx_loop_hook(data->mlx.mlx, &anim, data);
-	mlx_hook(data->mlx.win,KeyPress,KeyPressMask,&when_keypress,data);
-	mlx_hook(data->mlx.win, DestroyNotify, 0, &when_destroy, data);
-	// if (load_xpm(data) == NULL)
-	// 	when_destroy(data);
+	mlx_hook(data->mlx.win, KEYPRESS, 0, &when_keypress, data);
+	mlx_hook(data->mlx.win, DESTROYNOTIFY, 0, &when_destroy, data);
 	mlx_loop(data->mlx.mlx);
 }
 
-void render_xpm(t_data *data, void *xpm, int x, int y)
+void	render_xpm(t_data *data, void *xpm, int x, int y)
 {
 	mlx_put_image_to_window(data->mlx.mlx, data->mlx.win, xpm, x, y);
 }
 
-void place_map(t_data *data)
+void	place_map(t_data *data)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	y = 0;
-	while (y < (data->map.y ))
+	while (y < (data->map.y))
 	{
 		x = 0;
-		while (x < (data->map.x ))
+		while (x < (data->map.x))
 		{
 			place_items(data, x, y);
-		x++;
+			x++;
 		}
 		y++;
 	}
 	place_background_text(data);
 }
 
-void place_items(t_data *data, int x, int y)
+void	place_items(t_data *data, int x, int y)
 {
-	if (data->map.layout && data->map.layout[y ][x ] == '1')
+	if (data->map.layout && data->map.layout[y][x] == '1')
 		render_xpm(data, data->xpm.wall, x * PIXEL, (y + 2) * PIXEL);
-	else if (data->map.layout && data->map.layout[y ][x ] == '0')
+	else if (data->map.layout && data->map.layout[y][x] == '0')
 		render_xpm(data, data->xpm.ground, x * PIXEL, (y + 2) * PIXEL);
-	else if (data->map.layout && data->map.layout[y ][x ] == 'C')
-		render_xpm(data, data->xpm.coin, x* PIXEL, (y + 2) * PIXEL);
-	else if (data->map.layout && data->map.layout[y ][x ] == 'P')
+	else if (data->map.layout && data->map.layout[y][x] == 'C')
+		render_xpm(data, data->xpm.coin, x * PIXEL, (y + 2) * PIXEL);
+	else if (data->map.layout && data->map.layout[y][x] == 'P')
 	{
-		render_xpm(data, data->xpm.ground, x* PIXEL, (y + 2) * PIXEL);
-		render_xpm(data, data->xpm.player, x* PIXEL, (y + 2) * PIXEL);
+		render_xpm(data, data->xpm.ground, x * PIXEL, (y + 2) * PIXEL);
+		render_xpm(data, data->xpm.player, x * PIXEL, (y + 2) * PIXEL);
 	}
-	else if (data->map.layout && data->map.layout[y ][x ] == 'E')
-		render_xpm(data, data->xpm.trapdoor, x* PIXEL, (y + 2) * PIXEL);
-	else if (data->map.layout && data->map.layout[y ][x ] == 'X')
+	else if (data->map.layout && data->map.layout[y][x] == 'E')
+		render_xpm(data, data->xpm.trapdoor, x * PIXEL, (y + 2) * PIXEL);
+	else if (data->map.layout && data->map.layout[y][x] == 'X')
 	{
 		render_xpm(data, data->xpm.ground, x * PIXEL, (y + 2) * PIXEL);
 		render_xpm(data, data->xpm.ennemy, x * PIXEL, (y + 2) * PIXEL);
@@ -82,12 +81,12 @@ void place_items(t_data *data, int x, int y)
 		exit_message(INV_CHAR);
 }
 
-void place_background_text(t_data *data)
+void	place_background_text(t_data *data)
 {
-	int x;
-	int y;
-	char *count;
-	
+	int		x;
+	int		y;
+	char	*count;
+
 	y = 0;
 	while (y < 2)
 	{
@@ -95,7 +94,7 @@ void place_background_text(t_data *data)
 		while (x < data->map.x)
 		{
 			render_xpm(data, data->xpm.ground, x * PIXEL, y * PIXEL);
-			x++;	
+			x++;
 		}
 		y++;
 	}
