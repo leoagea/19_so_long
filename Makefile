@@ -6,7 +6,7 @@
 #    By: lagea <lagea@student.s19.be>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/06 01:08:23 by lagea             #+#    #+#              #
-#    Updated: 2024/05/31 15:54:14 by lagea            ###   ########.fr        #
+#    Updated: 2024/05/31 20:18:17 by lagea            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,14 +25,8 @@ BONUS_DIR	= bonus/
 OBJ_DIR		= obj/
 OBJB_DIR	= obj_bonus/
 INC_DIR		= inc/
-#EXIT_DIR	= src/exit/
-#PARSER_DIR	= src/parser/
-#RENDER_DIR	= src/render
 
-#EXIT		= $(wildcard $(EXIT_DIR)*.c)
-#MAP			= $(wildcard $(PARSER_DIR)*.c)  
-#RENDER		= $(wildcard $(RENDER_DIR)*.c)
-SRC 		= $(wildcard $(SRC_DIR)*.c)  #$(MAP) $(EXIT) $(RENDER)
+SRC 		= src/main.c src/check.c src/events.c src/exit.c src/map.c src/render.c src/xpm.c
 OBJ			= $(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 SRCB		= bonus/main_bonus.c bonus/anim_bonus.c bonus/render_bonus.c bonus/check_bonus.c \
 			 bonus/events_bonus.c bonus/exit_bonus.c  bonus/map_bonus.c  bonus/xpm_bonus.c
@@ -50,34 +44,43 @@ MLX			= -Lmlx -lmlx -framework OpenGL -framework AppKit
 TOTAL_FILES 	:= $(words $(SRC))
 CURRENT_FILE 	:= 0
 
-define progress_bar_push_swap
+define progress_bar_so_long
     @$(eval CURRENT_FILE=$(shell echo $$(($(CURRENT_FILE) + 1))))
-    @printf "\r$(YELLOW)Compiling Push Swap... [%-$(TOTAL_FILES)s] %d/%d $(NC)" $$(for i in $$(seq 1 $(CURRENT_FILE)); do printf "#"; done) $(CURRENT_FILE) $(TOTAL_FILES)
+    @printf "\r$(YELLOW)Compiling So long... [%-$(TOTAL_FILES)s] %d/%d $(NC)" $$(for i in $$(seq 1 $(CURRENT_FILE)); do printf "#"; done) $(CURRENT_FILE) $(TOTAL_FILES)
+	@if [ $(CURRENT_FILE) -eq $(TOTAL_FILES) ]; then echo ""; fi
+endef
+
+TOTAL_FILES 	:= $(words $(SRCB))
+CURRENT_FILE 	:= 0
+
+define progress_bar_so_long_bonus
+    @$(eval CURRENT_FILE=$(shell echo $$(($(CURRENT_FILE) + 1))))
+    @printf "\r$(YELLOW)Compiling So long bonus... [%-$(TOTAL_FILES)s] %d/%d $(NC)" $$(for i in $$(seq 1 $(CURRENT_FILE)); do printf "#"; done) $(CURRENT_FILE) $(TOTAL_FILES)
 	@if [ $(CURRENT_FILE) -eq $(TOTAL_FILES) ]; then echo ""; fi
 endef
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
 	@$(CC) $(C_FLAGS) $(INCS) -Imlx -c $< -g -o $@
-	$(call progress_bar_push_swap)
+	$(call progress_bar_so_long)
 
 $(OBJB_DIR)%.o: $(BONUS_DIR)%.c
-	mkdir -p $(OBJB_DIR)
-	$(CC) $(C_FLAGS) $(INCS) -Imlx -c $< -g -o $@
-	$(call progress_bar_push_swap)
+	@mkdir -p $(OBJB_DIR)
+	@$(CC) $(C_FLAGS) $(INCS) -Imlx -c $< -g -o $@
+	$(call progress_bar_so_long_bonus)
 
 all: $(LIBFT) $(NAME)
 
 bonus : $(BONUS)
 
-$(NAME): $(OBJ)
+$(NAME): $(LIBFT) $(OBJ)
 	@echo "$(GREEN)Linking objects to create executable...$(NC)"
 	@$(CC) $(OBJ) -Llib/ -lft $(MLX) -g -o $(NAME)
 	@echo "$(BLUE)Executable $(NAME) created!$(NC)"
 
 $(BONUS):$(LIBFT) $(OBJB)
 	@echo "$(GREEN)Linking objects to create executable...$(NC)"
-	$(CC) $(OBJB) -Llib/ -lft $(MLX) -g -o $(BONUS)
+	@$(CC) $(OBJB) -Llib/ -lft $(MLX) -g -o $(BONUS)
 	@echo "$(BLUE)Executable $(NAME) created!$(NC)"
 	
 $(LIBFT):
@@ -88,20 +91,20 @@ clean:
 	@echo "$(ORANGE)Cleaning objects for Libft...$(NC)"
 	@$(MAKE) clean -C $(LIBFT_PATH) > /dev/null
 	@echo "$(GREEN)Cleaned objects Libft!$(NC)"
-	@echo "$(ORANGE)Cleaning objects for Push Swap...$(NC)"
+	@echo "$(ORANGE)Cleaning objects for So long...$(NC)"
 	@$(RM) $(OBJ_DIR)*.o
 	@$(RM) $(OBJB_DIR)*.o
-	@echo "$(GREEN)Cleaned Push Swap objects!$(NC)"
+	@echo "$(GREEN)Cleaned So long objects!$(NC)"
 
 fclean: clean
 	@echo "$(ORANGE)Fully cleaning library for Libft...$(NC)"
 	@$(MAKE) fclean -C $(LIBFT_PATH) > /dev/null
 	@echo "$(BLUE)Fully cleaned Libft!$(NC)"
-	@echo "$(ORANGE)Fully cleaning library for Push Swap...$(NC)"
+	@echo "$(ORANGE)Fully cleaning library for So long...$(NC)"
 	@$(RM) $(NAME) $(BONUS)
 	@$(RM) -r $(OBJ_DIR)
 	@$(RM) -r $(OBJB_DIR)
-	@echo "$(BLUE)Fully cleaned Push Swap!$(NC)"
+	@echo "$(BLUE)Fully cleaned So long!$(NC)"
 
 re: fclean all
 
