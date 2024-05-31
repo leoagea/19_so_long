@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:04:03 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/30 18:18:52 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/31 15:52:58 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define BORD "Border are invalid"
 # define INV_SIZE "Map is too big"
 # define INV_CHAR "Char in map not valid"
+# define INV_ARG "Number of arguments is not valid"
 # define PIXEL 24
 # define A 0
 # define S 1
@@ -138,7 +139,6 @@ void destroy_image(t_data *data);
 /*--------------------RENDER--------------------*/
 
 void			render_map(t_data *data);
-void load_xpm(t_data *data);
 void render_xpm(t_data *data, void *xpm, int x, int y);
 void place_map(t_data *data);
 void place_items(t_data *data, int x, int y);
@@ -164,5 +164,10 @@ void checker_size(t_data *data);
 void anim_coin(t_data *data,int x,int y);
 void anim_loop(t_data *data);
 int anim(t_data *data);
+
+/*----------------------XPM---------------------*/
+
+int load_xpm(t_data *data);
+int load_xpm_2(t_data *data, int x, int y);
 
 #endif

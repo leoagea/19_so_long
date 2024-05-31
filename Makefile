@@ -6,7 +6,7 @@
 #    By: lagea <lagea@student.s19.be>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/06 01:08:23 by lagea             #+#    #+#              #
-#    Updated: 2024/05/31 12:29:28 by lagea            ###   ########.fr        #
+#    Updated: 2024/05/31 15:54:14 by lagea            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ INC_DIR		= inc/
 SRC 		= $(wildcard $(SRC_DIR)*.c)  #$(MAP) $(EXIT) $(RENDER)
 OBJ			= $(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 SRCB		= bonus/main_bonus.c bonus/anim_bonus.c bonus/render_bonus.c bonus/check_bonus.c \
-			 bonus/events_bonus.c bonus/exit_bonus.c  bonus/map_bonus.c 
+			 bonus/events_bonus.c bonus/exit_bonus.c  bonus/map_bonus.c  bonus/xpm_bonus.c
 OBJB		= $(SRCB:$(BONUS_DIR)%.c=$(OBJB_DIR)%.o)
 
 LIBFT 		= lib/libft.a

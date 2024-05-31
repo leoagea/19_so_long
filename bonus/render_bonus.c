@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 23:32:36 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/30 18:19:54 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/31 15:47:13 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void render_map(t_data *data)
 		free(data->mlx.mlx);
 		exit(EXIT_FAILURE);
 	}
-	// mlx_do_sync(data->mlx.mlx);
 	load_xpm(data);
 	place_map(data);
 	mlx_loop_hook(data->mlx.mlx, &anim, data);
@@ -33,37 +32,6 @@ void render_map(t_data *data)
 	// if (load_xpm(data) == NULL)
 	// 	when_destroy(data);
 	mlx_loop(data->mlx.mlx);
-}
-
-void load_xpm(t_data *data)
-{
-	int x;
-	int y;
-	data->xpm.wall = mlx_xpm_file_to_image(data->mlx.mlx, "assets_24x24/wall.xpm", &x, &y);
-	// if (!data->xpm.wall)
-	// 	return data->xpm.wall = NULL;
-	data->xpm.coin = mlx_xpm_file_to_image(data->mlx.mlx, "assets_24x24/coin.xpm", &x, &y);
-	// if (!data->xpm.wall)
-	// 	return data->xpm.wall = NULL;
-	data->xpm.player = mlx_xpm_file_to_image(data->mlx.mlx, "assets_24x24/player.xpm", &x, &y);
-	// if (!data->xpm.wall)
-	// 	return data->xpm.wall = NULL;
-	data->xpm.ennemy = mlx_xpm_file_to_image(data->mlx.mlx, "assets_24x24/ennemy.xpm", &x, &y);
-	// if (!data->xpm.wall)
-	// 	return data->xpm.wall = NULL;
-	data->xpm.ground = mlx_xpm_file_to_image(data->mlx.mlx, "assets_24x24/ground.xpm", &x, &y);
-	// if (!data->xpm.wall)
-	// 	return data->xpm.wall = NULL;
-	data->xpm.ladder = mlx_xpm_file_to_image(data->mlx.mlx, "assets_24x24/ladder.xpm", &x, &y);
-	// if (!data->xpm.wall)
-	// 	return data->xpm.wall = NULL;
-	data->xpm.trapdoor = mlx_xpm_file_to_image(data->mlx.mlx, "assets_24x24/trapdoor.xpm", &x, &y);
-	data->xpm.coin_2 = mlx_xpm_file_to_image(data->mlx.mlx, "assets_24x24/coin_2.xpm", &x, &y);
-	data->xpm.coin_3 = mlx_xpm_file_to_image(data->mlx.mlx, "assets_24x24/coin_3.xpm", &x, &y);
-	data->xpm.coin_4 = mlx_xpm_file_to_image(data->mlx.mlx, "assets_24x24/coin_4.xpm", &x, &y);
-	// if (!data->xpm.wall)
-	// 	return data->xpm.wall = NULL;
-	// return (void *)x;
 }
 
 void render_xpm(t_data *data, void *xpm, int x, int y)
@@ -77,23 +45,17 @@ void place_map(t_data *data)
 	int y;
 
 	y = 0;
-	printf("\nx : %d, y : %d",data->map.x, data->map.y);
 	while (y < (data->map.y ))
 	{
-		// printf("test\n");
 		x = 0;
 		while (x < (data->map.x ))
 		{
-			// printf("test 0, %d\n",count++);
-			// printf("x : %d, y : %d, char : %c\n", x, y,data->map.layout[y][x]);
 			place_items(data, x, y);
 		x++;
 		}
 		y++;
 	}
 	place_background_text(data);
-	printf("\nplayer x : %d, y : %d\n", data->player.x, data->player.y);
-	printf("collectable : %d , exit : %d , player : %d\n", data->collec.count, data->exit.count, data->player.count);
 }
 
 void place_items(t_data *data, int x, int y)
