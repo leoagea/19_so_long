@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:05:48 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/31 17:06:17 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/31 18:39:18 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,30 @@ static void	init_data(t_data *data)
 	data->cpmap.exit = 0;
 }
 
+static int	check_ber(char **av)
+{
+	int	len;
+
+	len = ft_strlen(av[1]);
+	if (av[1][len - 1] != 'r' && av[1][len - 2] != 'e' && av[1][len - 3] != 'b'
+		&& av[1][len - 4] != '.')
+		return (-1);
+	return (1);
+}
+
 int	main(int ac, char **av)
 {
 	t_data	data;
 
 	if (ac == 2)
+	{
+		if (check_ber(av) == -1)
+		{
+			ft_printf("Error\nInvalid extension");
+			exit(EXIT_FAILURE);
+		}
 		data.map.path = av[1];
+	}
 	else
 		exit_message(INV_ARG);
 	init_data(&data);
