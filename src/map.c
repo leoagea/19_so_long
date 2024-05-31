@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:35:54 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/30 17:44:51 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/31 12:37:53 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void open_map(t_data *data)
 	data->map.fd = open(data->map.path, O_RDONLY);
 	if (data->map.fd == -1)
 	{
+    	system("leaks so_long");
 		ft_printf("Error\n");
 		ft_printf("%s\n",strerror(errno));
 		exit(EXIT_FAILURE);
