@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 16:02:30 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/30 18:14:36 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/31 15:24:46 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void anim_loop(t_data *data)
 				anim_coin(data, j , i);
 			j++;
 		}
-		// printf("i : %d",i);
 		i++;
 	}
 }
@@ -50,6 +49,5 @@ int anim(t_data *data)
 	if (data->collec.anim == 50)
 		data->collec.anim = 0;
 	data->collec.anim++;
-	// printf("%d\n", data->collec.anim);
 	return 1;
 }

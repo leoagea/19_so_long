@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:05:48 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/30 17:12:45 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/31 15:27:51 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,10 @@ int	main(int ac, char **av)
 	if (ac == 2)
 		data.map.path = av[1];
 	init_data(&data);
-	// data.map.path = "maps/map_test.ber";
 	open_map(&data);
-	
-	printf("\nbool : %d\n",checker_map(&data));
-	
+	if (checker_map(&data) == -1)
+		exit_message(INV);
 	render_map(&data);
-	
 	// system("leaks so_long");
 	return 0;
 }

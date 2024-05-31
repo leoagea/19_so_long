@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:05:48 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/30 18:25:30 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/31 15:21:25 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,23 +33,16 @@ static void init_data(t_data *data)
 
 int	main(int ac, char **av)
 {
-	(void)ac;
-	(void)av;
-
 	t_data data;
 	
 	if (ac == 2)
 		data.map.path = av[1];
+	else
+		exit_message(INV_ARG);
 	init_data(&data);
-	// data.map.path = "maps/map_test.ber";
 	open_map(&data);
-	
-	// printf("\nbool : %d\n",checker_map(&data));
 	if (checker_map(&data) == -1)
 		exit_message(INV);
-	
 	render_map(&data);
-	
-	// system("leaks so_long");
 	return 0;
 }

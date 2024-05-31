@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check.c                                            :+:      :+:    :+:   */
+/*   check_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 22:50:54 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/30 18:23:57 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/31 15:26:22 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,8 @@
 
 int backtrack_map(t_data *data, int x, int y)
 {
-    // printf("x : %d, data.map.x : %d\n",x, data->map.x);
-    // printf("y : %d, data.map.y : %d\n",y, data->map.y);
     if (x > 0 && x < data->map.x && y < data->map.y && y > 0)
     {
-        // printf("test\n"); 
         if (data->cpmap.map[y][x] == '1' || data->cpmap.map[y][x] == 'X' || data->cpmap.map[y][x] == 'V')
             return 1;
         if (data->cpmap.map[y][x] == '0' || data->cpmap.map[y][x] == 'P')
@@ -93,17 +90,13 @@ int checker_map(t_data *data)
 {
     if (cpy_map(data) == -1)
         return -1;
-    // checker_size(data);
     if (check_border(data) == -1)
     {
         free_map(data,data->map.y);
         exit_message(BORD);
     }
     checker_size(data);
-    // printf("Check border : %d\n",check_border(data));
-    // printf("collec : %d, exit : %d\n",data->cpmap.count, data->cpmap.exit);
     backtrack_map(data, data->player.x, data->player.y);
-    // printf("collec : %d, exit : %d\n",data->cpmap.count, data->cpmap.exit);
     free_map(data, data->map.y);
     if (data->cpmap.count != data->collec.count || data->cpmap.exit != 1 || data->player.count != 1)
         return -1;
@@ -120,14 +113,12 @@ void checker_size(t_data *data)
     line = 0;
     while (data->cpmap.map[line] != NULL)
         line++;
-    printf("line : %d\n",line);
     len = ft_strlen(data->map.layout[0]) - 1;
     if (line > 50 || len > 100)
         exit_message(INV_SIZE);
     while (i < data->map.y - 1)
     {
         len = ft_strlen(data->map.layout[i]) - 1;
-        // printf("len from strlen : %d, map.x : %d\n",len , data->map.x);
         if (len != data->map.x)
             exit_message(NOT_RECT);
         i++;

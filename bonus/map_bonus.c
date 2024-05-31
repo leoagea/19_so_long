@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   map_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:35:54 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/30 17:44:51 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/31 15:28:27 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void open_map(t_data *data)
 		ft_printf("%s\n",strerror(errno));
 		exit(EXIT_FAILURE);
 	}
-	// read_map(data->map.fd);
 	get_malloc_size(data);
 	parse_map(data);
 	close(data->map.fd);
@@ -36,7 +35,6 @@ void get_malloc_size(t_data *data)
 		exit_message(EMPTY);
 	else if (ft_strlen(read) == 1)
 		exit_message(INV);
-	// printf("%s",read);
 	data->map.x = ft_strlen(read) - 1;
 	while(read != NULL)
 	{
@@ -45,18 +43,14 @@ void get_malloc_size(t_data *data)
 		read = get_next_line(data->map.fd);
 		if (read == NULL || read[1] == '\n')
 			break ;
-		// printf("%s",read);
 	}
 	free(read);
 	close(data->map.fd);
-	printf("nbr ligne : %d, long ligne: %d\n",data->map.y, data->map.x);
 }
-// add funcrtion to check if last line is strlen - 1 de line 
 
 void parse_map(t_data *data)
 {
 	int i;
-	// char *read;
 	
 	i = 0;
 	data->map.layout = (char **) malloc((data->map.y + 1) * sizeof(char *));
@@ -65,31 +59,13 @@ void parse_map(t_data *data)
 	{
 		data->map.layout[i] = get_next_line(data->map.fd);
 		get_info_map(i, data);
-		// printf("%s",data->map.layout[i]);
 		i++;
 	}
 	data->map.layout[i] = NULL;
-	printf("Apres parsing : \n");
-	i = 0;
-	while (data->map.layout[i] != NULL)
-	{
-		printf("%s",data->map.layout[i]);
-		i++;
-	}
-	printf("\nPlayer, count : %d, x : %d, y : %d\n",data->player.count, data->player.x, data->player.y);
-	printf("Exit, count : %d, x : %d, y : %d\n",data->exit.count, data->exit.x, data->exit.y);
-	printf("Nbr collec : %d\n",data->collec.count);
-	printf("Nbr ennemy : %d\n",data->ennemy.count);
 }
 
 void get_info_map(int i, t_data *data)
 {
-	// if (i != data->map.y)
-	// 	if ((int)ft_strlen(data->map.layout[i]) != data->map.x)
-	// 		exit_message(NOT_RECT);
-	// if (i == data->map.y)
-	// 	if ((int)ft_strlen(data->map.layout[i]) != (data->map.x - 1))
-	// 		exit_message(NOT_RECT);
 	int j;
 
 	j = 0;
