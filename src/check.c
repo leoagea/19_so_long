@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 22:50:54 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/31 17:51:53 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/31 18:25:22 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,8 @@ int	checker_map(t_data *data)
 	checker_size(data);
 	backtrack_map(data, data->player.x, data->player.y);
 	free_map(data, data->map.y);
-	if ( data->cpmap.count < 1 || data->cpmap.count != data->collec.count || data->cpmap.exit != 1
-		|| data->player.count != 1 )
+	if (data->cpmap.count < 1 || data->cpmap.count != data->collec.count
+		|| data->cpmap.exit != 1 || data->player.count != 1)
 		return (-1);
 	return (1);
 }

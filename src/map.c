@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:35:54 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/31 18:13:28 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/31 18:25:26 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,8 @@ void	get_info_map(int i, t_data *data)
 			data->exit.y = i;
 			data->exit.count++;
 		}
-		else if (data->map.layout[i][j] != '0' && data->map.layout[i][j] != '1' && data->map.layout[i][j] != '\n')
+		else if (data->map.layout[i][j] != '0' && data->map.layout[i][j] != '1'
+			&& data->map.layout[i][j] != '\n')
 			exit_message(INV_CHAR);
 		j++;
 	}
