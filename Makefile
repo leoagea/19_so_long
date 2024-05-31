@@ -6,7 +6,7 @@
 #    By: lagea <lagea@student.s19.be>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/06 01:08:23 by lagea             #+#    #+#              #
-#    Updated: 2024/05/30 17:43:44 by lagea            ###   ########.fr        #
+#    Updated: 2024/05/31 12:29:28 by lagea            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,8 @@ INC_DIR		= inc/
 #RENDER		= $(wildcard $(RENDER_DIR)*.c)
 SRC 		= $(wildcard $(SRC_DIR)*.c)  #$(MAP) $(EXIT) $(RENDER)
 OBJ			= $(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
-SRCB		= bonus/main_bonus.c bonus/anim_bonus.c bonus/render_bonus.c src/check.c src/events.c src/exit.c  src/map.c 
+SRCB		= bonus/main_bonus.c bonus/anim_bonus.c bonus/render_bonus.c bonus/check_bonus.c \
+			 bonus/events_bonus.c bonus/exit_bonus.c  bonus/map_bonus.c 
 OBJB		= $(SRCB:$(BONUS_DIR)%.c=$(OBJB_DIR)%.o)
 
 LIBFT 		= lib/libft.a
@@ -89,6 +90,7 @@ clean:
 	@echo "$(GREEN)Cleaned objects Libft!$(NC)"
 	@echo "$(ORANGE)Cleaning objects for Push Swap...$(NC)"
 	@$(RM) $(OBJ_DIR)*.o
+	@$(RM) $(OBJB_DIR)*.o
 	@echo "$(GREEN)Cleaned Push Swap objects!$(NC)"
 
 fclean: clean
@@ -96,8 +98,9 @@ fclean: clean
 	@$(MAKE) fclean -C $(LIBFT_PATH) > /dev/null
 	@echo "$(BLUE)Fully cleaned Libft!$(NC)"
 	@echo "$(ORANGE)Fully cleaning library for Push Swap...$(NC)"
-	@$(RM) $(NAME)
+	@$(RM) $(NAME) $(BONUS)
 	@$(RM) -r $(OBJ_DIR)
+	@$(RM) -r $(OBJB_DIR)
 	@echo "$(BLUE)Fully cleaned Push Swap!$(NC)"
 
 re: fclean all
