@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 13:38:24 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/24 17:41:07 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/31 19:59:41 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	dll_print_backward(t_dll *dll)
 {
-	int i;
+	int		i;
 	t_node	*current;
 
 	i = 0;
