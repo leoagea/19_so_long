@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 17:46:38 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/30 18:26:44 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/31 12:31:44 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int when_keypress(int keysym, t_data *data)
 		move(data, (data->player.x), (data->player.y + 1));
 	else
 		return 0;
-	// place_background_text(data);
+	ft_printf("Moves : %d\n",data->count);
 	return (1);
 }
 
@@ -55,13 +55,13 @@ int move(t_data *data, int x, int y)
 		data->collec.game++;
 		data->map.layout[y][x] = '0';
 	}
-	render_xpm(data, data->xpm.ground, data->player.x * PIXEL, (data->player.y + 2) * PIXEL);
-	render_xpm(data, data->xpm.player, x * PIXEL, (y + 2) * PIXEL);
+	render_xpm(data, data->xpm.ground, data->player.x * PIXEL, (data->player.y) * PIXEL);
+	render_xpm(data, data->xpm.player, x * PIXEL, (y) * PIXEL);
 	data->count++;
 	if (data->collec.game == data->collec.count)
 	{
-		render_xpm(data, data->xpm.ground, data->exit.x * PIXEL, (data->exit.y + 2)* PIXEL);
-		render_xpm(data, data->xpm.ladder, data->exit.x * PIXEL, (data->exit.y + 2) * PIXEL);
+		render_xpm(data, data->xpm.ground, data->exit.x * PIXEL, (data->exit.y) * PIXEL);
+		render_xpm(data, data->xpm.ladder, data->exit.x * PIXEL, (data->exit.y) * PIXEL);
 	}
 	data->player.x = x;
 	data->player.y = y;
