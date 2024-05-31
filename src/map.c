@@ -6,20 +6,20 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:35:54 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/31 15:18:33 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/31 17:04:35 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void open_map(t_data *data)
-{	
+void	open_map(t_data *data)
+{
 	data->map.fd = open(data->map.path, O_RDONLY);
 	if (data->map.fd == -1)
 	{
-    	system("leaks so_long");
+		system("leaks so_long");
 		ft_printf("Error\n");
-		ft_printf("%s\n",strerror(errno));
+		ft_printf("%s\n", strerror(errno));
 		exit(EXIT_FAILURE);
 	}
 	get_malloc_size(data);
@@ -27,17 +27,17 @@ void open_map(t_data *data)
 	close(data->map.fd);
 }
 
-void get_malloc_size(t_data *data)
+void	get_malloc_size(t_data *data)
 {
-	char *read;
-	
+	char	*read;
+
 	read = get_next_line(data->map.fd);
 	if (read == NULL)
 		exit_message(EMPTY);
 	else if (ft_strlen(read) == 1)
 		exit_message(INV);
 	data->map.x = ft_strlen(read) - 1;
-	while(read != NULL)
+	while (read != NULL)
 	{
 		data->map.y += 1;
 		free(read);
@@ -49,12 +49,12 @@ void get_malloc_size(t_data *data)
 	close(data->map.fd);
 }
 
-void parse_map(t_data *data)
+void	parse_map(t_data *data)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
-	data->map.layout = (char **) malloc((data->map.y + 1) * sizeof(char *));
+	data->map.layout = (char **)malloc((data->map.y + 1) * sizeof(char *));
 	open(data->map.path, O_RDONLY);
 	while (i < data->map.y)
 	{
@@ -65,9 +65,9 @@ void parse_map(t_data *data)
 	data->map.layout[i] = NULL;
 }
 
-void get_info_map(int i, t_data *data)
+void	get_info_map(int i, t_data *data)
 {
-	int j;
+	int	j;
 
 	j = 0;
 	while (data->map.layout[i][j])
@@ -81,7 +81,7 @@ void get_info_map(int i, t_data *data)
 			data->player.count++;
 		}
 		else if (data->map.layout[i][j] == 'E')
-		{	
+		{
 			data->exit.x = j;
 			data->exit.y = i;
 			data->exit.count++;
@@ -89,5 +89,5 @@ void get_info_map(int i, t_data *data)
 		else if (data->map.layout[i][j] == 'X')
 			data->ennemy.count++;
 		j++;
-	}	
+	}
 }

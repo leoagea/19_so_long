@@ -6,23 +6,23 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 01:26:11 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/25 15:22:48 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/31 17:19:57 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <errno.h>  //errno
 # include <fcntl.h>  //open
 # include <limits.h> //Macro INT_MAX
 # include <stdarg.h>
-# include <stddef.h> //NULL
-# include <stdlib.h> //free
-# include <stdio.h> //perror
-# include <string.h> //strerror
-# include <unistd.h> //read
-# include <errno.h> //errno
 # include <stdbool.h> //boolean
+# include <stddef.h>  //NULL
+# include <stdio.h>   //perror
+# include <stdlib.h>  //free
+# include <string.h>  //strerror
+# include <unistd.h>  //read
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
@@ -41,7 +41,7 @@ typedef struct s_dll
 	struct s_node	*tail;
 }					t_dll;
 
-/*-----------------------------------------LIBFT---------------------------------------------*/
+/*------------------------------LIBFT-----------------------------------*/
 /*Libc functions*/
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
@@ -107,7 +107,7 @@ void				ft_lstiter(t_list *lst, void (*f)(void *));
 void				ft_lstdelone(t_list *lst, void (*del)(void *));
 void				ft_lstclear(t_list **lst, void (*del)(void *));
 
-/*----------------------------------PRINTF-------------------------------------*/
+/*------------------------------PRINTF----------------------------------*/
 /* Printf */
 
 int					ft_print_char(char c);
@@ -133,7 +133,7 @@ int					ft_parse_printf(const char *s, int index, va_list *par);
 /* Printf */
 int					ft_printf(const char *s, ...);
 
-/*------------------------------ADDED FUNCTIONS-----+--------------------------*/
+/*---------------------------ADDED FUNCTIONS------------------------------*/
 
 void				ft_putunbr_fd(unsigned int n, int fd);
 long				ft_atol(const char *str);

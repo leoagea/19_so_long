@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:04:03 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/31 15:52:58 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/31 17:20:53 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define SO_LONG_H
 
 # include "libft.h"
-// # include <mlx.h>
 # include "../mlx/mlx.h"
 
 # define EMPTY "Map file is empty"
@@ -35,9 +34,8 @@
 # define AR_U 126
 # define AR_D 125
 # define ESC 53
-# define KeyPress 02
-# define DestroyNotify 17
-# define KeyPressMask (1L << 0)
+# define KEYPRESS 02
+# define DESTROYNOTIFY 17
 
 typedef struct s_player
 {
@@ -57,7 +55,7 @@ typedef struct s_collec
 {
 	int			game;
 	int			count;
-	int anim;
+	int			anim;
 }				t_collec;
 
 typedef struct s_ennemy
@@ -79,9 +77,9 @@ typedef struct s_map
 
 typedef struct s_cpmap
 {
-	int exit;
-	int count;
-	char **map;
+	int			exit;
+	int			count;
+	char		**map;
 }				t_cpmap;
 
 typedef struct s_mlx
@@ -93,19 +91,19 @@ typedef struct s_mlx
 
 typedef struct s_xpm
 {
-	void *coin;
-	void *wall;
-	void *ennemy;
-	void *ground;
-	void *ground_2;
-	void *ground_3;
-	void *player;
-	void *ladder;
-	void *trapdoor;
-	void *coin_2;
-	void *coin_3;
-	void *coin_4;
-	
+	void		*coin;
+	void		*wall;
+	void		*ennemy;
+	void		*ground;
+	void		*ground_2;
+	void		*ground_3;
+	void		*player;
+	void		*ladder;
+	void		*trapdoor;
+	void		*coin_2;
+	void		*coin_3;
+	void		*coin_4;
+
 }				t_xpm;
 
 typedef struct s_data
@@ -132,42 +130,42 @@ void			get_info_map(int i, t_data *data);
 
 /*---------------------exit---------------------*/
 
-int free_map(t_data *data, int y);
+int				free_map(t_data *data, int y);
 void			exit_message(char *str);
-void destroy_image(t_data *data);
+void			destroy_image(t_data *data);
 
 /*--------------------RENDER--------------------*/
 
 void			render_map(t_data *data);
-void render_xpm(t_data *data, void *xpm, int x, int y);
-void place_map(t_data *data);
-void place_items(t_data *data, int x, int y);
-void place_background_text(t_data *data);
+void			render_xpm(t_data *data, void *xpm, int x, int y);
+void			place_map(t_data *data);
+void			place_items(t_data *data, int x, int y);
+void			place_background_text(t_data *data);
 
 /*--------------------Events--------------------*/
 
-int when_destroy(t_data *data);
-int when_keypress(int keysym, t_data *data);
-int move(t_data *data, int x, int y);
+int				when_destroy(t_data *data);
+int				when_keypress(int keysym, t_data *data);
+int				move(t_data *data, int x, int y);
 
 /*---------------------Check--------------------*/
 
-int backtrack_map(t_data *data, int x, int y);
-int cpy_map(t_data *data);
-int check_border(t_data *data);
-int checker_map(t_data *data);
-void checker_size(t_data *data);
+int				backtrack_map(t_data *data, int x, int y);
+int				cpy_map(t_data *data);
+int				check_border(t_data *data);
+int				checker_map(t_data *data);
+void			checker_size(t_data *data);
 
 /*=====================BONUS====================*/
 /*---------------------Anim---------------------*/
 
-void anim_coin(t_data *data,int x,int y);
-void anim_loop(t_data *data);
-int anim(t_data *data);
+void			anim_coin(t_data *data, int x, int y);
+void			anim_loop(t_data *data);
+int				anim(t_data *data);
 
 /*----------------------XPM---------------------*/
 
-int load_xpm(t_data *data);
-int load_xpm_2(t_data *data, int x, int y);
+int				load_xpm(t_data *data);
+int				load_xpm_2(t_data *data, int x, int y);
 
 #endif
