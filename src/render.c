@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 23:32:36 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/30 18:28:15 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/31 11:54:39 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void render_map(t_data *data)
     data->mlx.mlx = mlx_init();
 	if (!data->mlx.mlx)
 		exit(EXIT_FAILURE);
-	data->mlx.win = mlx_new_window(data->mlx.mlx, (data->map.x) * PIXEL, (data->map.y + 2) * PIXEL, "So_long");
+	data->mlx.win = mlx_new_window(data->mlx.mlx, (data->map.x) * PIXEL, (data->map.y) * PIXEL, "So_long");
 	if (!data->mlx.win)
 	{
 		free(data->mlx.mlx);
@@ -95,17 +95,17 @@ void place_map(t_data *data)
 void place_items(t_data *data, int x, int y)
 {
 	if (data->map.layout && data->map.layout[y ][x ] == '1')
-		render_xpm(data, data->xpm.wall, x * PIXEL, (y + 2) * PIXEL);
+		render_xpm(data, data->xpm.wall, x * PIXEL, y * PIXEL);
 	else if (data->map.layout && data->map.layout[y ][x ] == '0')
-		render_xpm(data, data->xpm.ground, x * PIXEL, (y + 2) * PIXEL);
+		render_xpm(data, data->xpm.ground, x * PIXEL, y * PIXEL);
 	else if (data->map.layout && data->map.layout[y ][x ] == 'C')
-		render_xpm(data, data->xpm.coin, x* PIXEL, (y + 2) * PIXEL);
+		render_xpm(data, data->xpm.coin, x* PIXEL, y * PIXEL);
 	else if (data->map.layout && data->map.layout[y ][x ] == 'E')
-		render_xpm(data, data->xpm.trapdoor, x* PIXEL, (y + 2) * PIXEL);
+		render_xpm(data, data->xpm.trapdoor, x* PIXEL, y * PIXEL);
 	else if (data->map.layout && data->map.layout[y ][x ] == 'P')
 	{
-		render_xpm(data, data->xpm.ground, x* PIXEL, (y + 2) * PIXEL);
-		render_xpm(data, data->xpm.player, x* PIXEL, (y + 2) * PIXEL);
+		render_xpm(data, data->xpm.ground, x* PIXEL, y * PIXEL);
+		render_xpm(data, data->xpm.player, x* PIXEL, y * PIXEL);
 	}
 	else
 		exit_message(INV_CHAR);
