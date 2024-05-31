@@ -5,7 +5,7 @@ static const char *dHJhcGRvb3I_[] = {
 "   c #210D13",
 ".  c #200D14",
 "X  c #241219",
-"o  c #25131A",
+"o  c #3D253B",
 "O  c #2D161B",
 "+  c #3F211F",
 "@  c #2A1921",
@@ -144,7 +144,7 @@ static const char *dHJhcGRvb3I_[] = {
 "z. c #A6B8C6",
 "x. c #ABBECC",
 "c. c #AFC2D0",
-"v. c None",
+"v. c #3D253B",
 /* pixels */
 "v.v.o o o o o o o o o o o o o o o o o o o o v.v.",
 "v.. @ N K J F D D J K K K K J D D F J K N @ . v.",
