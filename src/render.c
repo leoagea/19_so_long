@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 23:32:36 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/31 17:20:45 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/31 17:53:22 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,4 @@ void	place_items(t_data *data, int x, int y)
 		render_xpm(data, data->xpm.ground, x * PIXEL, y * PIXEL);
 		render_xpm(data, data->xpm.player, x * PIXEL, y * PIXEL);
 	}
-	else
-		exit_message(INV_CHAR);
 }
