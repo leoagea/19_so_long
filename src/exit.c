@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 20:07:03 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/30 17:44:46 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/31 12:34:20 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void destroy_image(t_data *data)
 
 void exit_message(char *str)
 {
+    system("leaks so_long");
 	ft_printf("Error\n");
 	ft_printf("%s\n", str);
 	exit(EXIT_FAILURE);
