@@ -6,11 +6,11 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 16:02:30 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/31 17:22:48 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/31 19:58:17 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/so_long.h"
+#include "../inc/so_long.h"
 
 void	anim_coin(t_data *data, int x, int y)
 {

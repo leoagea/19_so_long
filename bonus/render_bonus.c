@@ -6,11 +6,11 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 23:32:36 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/31 18:19:04 by lagea            ###   ########.fr       */
+/*   Updated: 2024/05/31 19:58:32 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/so_long.h"
+#include "../inc/so_long.h"
 
 void	render_map(t_data *data)
 {
