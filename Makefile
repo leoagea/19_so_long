@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lagea <lagea@student.s19.be>               +#+  +:+       +#+         #
+#    By: lagea < lagea@student.s19.be >             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/06 01:08:23 by lagea             #+#    #+#              #
-#    Updated: 2024/05/31 20:18:17 by lagea            ###   ########.fr        #
+#    Updated: 2025/01/14 17:54:58 by lagea            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,21 @@ CC			= gcc
 RM			= rm -f
 C_FLAGS		= -Wall -Wextra -Werror
 INCS 		= -I$(INC_DIR) -I.
-MLX			= -Lmlx -lmlx -framework OpenGL -framework AppKit
+#MLX			= -Lmlx -lmlx -framework OpenGL -framework AppKit
+
+ifeq ($(shell uname -s), Linux)
+	MLX_DIR = mlx-linux
+	MLX_PATH = mxl-linux/libmlx.a
+	MLX = -L /usr/lib -lXext -lX11 -lm
+	MLX_OBJ = -I/usr/include -Imlx_linux -o3
+else
+	MLX_DIR = mlx-mac
+	MLX_PATH = mxl-mac/libmlx.a
+	MLX = -Lmlx -framework OpenGL -framework AppKit
+	MLX_OBJ = -Imlx -c -o3
+endif
+
+MLX_LIB = -L $(MLX_DIR) -lmlx
 
 TOTAL_FILES 	:= $(words $(SRC))
 CURRENT_FILE 	:= 0
@@ -74,13 +88,14 @@ all: $(LIBFT) $(NAME)
 bonus : $(BONUS)
 
 $(NAME): $(LIBFT) $(OBJ)
+#	@make -C $(MLX_DIR)
 	@echo "$(GREEN)Linking objects to create executable...$(NC)"
-	@$(CC) $(OBJ) -Llib/ -lft $(MLX) -g -o $(NAME)
+	@$(CC) $(OBJ) $(LIBFT) $(MLX_LIB) $(MLX) -g -o $(NAME)
 	@echo "$(BLUE)Executable $(NAME) created!$(NC)"
 
 $(BONUS):$(LIBFT) $(OBJB)
 	@echo "$(GREEN)Linking objects to create executable...$(NC)"
-	@$(CC) $(OBJB) -Llib/ -lft $(MLX) -g -o $(BONUS)
+	@$(CC) $(OBJB) $(LIBFT) $(MLX_LIB) $(MLX) -g -o $(BONUS)
 	@echo "$(BLUE)Executable $(NAME) created!$(NC)"
 	
 $(LIBFT):

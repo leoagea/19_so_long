@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
+/*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 23:32:36 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/31 17:53:22 by lagea            ###   ########.fr       */
+/*   Updated: 2025/01/14 16:41:52 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	render_map(t_data *data)
 		exit(EXIT_FAILURE);
 	}
 	mlx_do_sync(data->mlx.mlx);
-	mlx_hook(data->mlx.win, KEYPRESS, 0, &when_keypress, data);
-	mlx_hook(data->mlx.win, DESTROYNOTIFY, 0, &when_destroy, data);
+	mlx_hook(data->mlx.win, KEYPRESS, KeyPressMask, &when_keypress, data);
+	mlx_hook(data->mlx.win, DESTROYNOTIFY, StructureNotifyMask, &when_destroy, data);
 	if (load_xpm(data) == -1)
 		when_destroy(data);
 	place_map(data);

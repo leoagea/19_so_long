@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
+/*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 23:32:36 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/31 19:58:32 by lagea            ###   ########.fr       */
+/*   Updated: 2025/01/14 17:57:32 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	render_map(t_data *data)
 		when_destroy(data);
 	place_map(data);
 	mlx_loop_hook(data->mlx.mlx, &anim, data);
-	mlx_hook(data->mlx.win, KEYPRESS, 0, &when_keypress, data);
-	mlx_hook(data->mlx.win, DESTROYNOTIFY, 0, &when_destroy, data);
+	mlx_hook(data->mlx.win, KEYPRESS, KeyPressMask, &when_keypress, data);
+	mlx_hook(data->mlx.win, DESTROYNOTIFY, StructureNotifyMask, &when_destroy, data);
 	mlx_loop(data->mlx.mlx);
 }
 
@@ -84,7 +84,8 @@ void	place_background_text(t_data *data)
 	int		x;
 	int		y;
 	char	*count;
-
+	char	*msg;
+	
 	y = 0;
 	while (y < 2)
 	{
@@ -97,7 +98,8 @@ void	place_background_text(t_data *data)
 		y++;
 	}
 	count = ft_itoa(data->count);
-	mlx_string_put(data->mlx.mlx, data->mlx.win, 0, 0, 12895487, "Moves :");
-	mlx_string_put(data->mlx.mlx, data->mlx.win, 80, 0, 12895487, count);
+	msg = ft_strjoin("Moves: ", count);
 	free(count);
+	mlx_string_put(data->mlx.mlx, data->mlx.win, 0, 15, 12895487, msg);
+	free(msg);
 }

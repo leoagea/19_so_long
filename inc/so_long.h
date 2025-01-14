@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
+/*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:04:03 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/31 20:21:03 by lagea            ###   ########.fr       */
+/*   Updated: 2025/01/14 17:22:12 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,24 @@
 # define SO_LONG_H
 
 # include "libft.h"
-# include "../mlx/mlx.h"
+#ifdef __APPLE__
+	# include "../mlx-mac/mlx.h"
+	# define XK_a 12
+	# define XK_s 1
+	# define XK_d 2
+	# define XK_w 6
+	# define XK_Right 124
+	# define XK_Left 123
+	# define XK_Up 126
+	# define XK_Down 125
+	# define XK_Escape 53
+	# define KeyPressMask 0
+	# define StructureNotifyMask 0
+#elif __linux__
+	# include "../mlx-linux/mlx.h"
+	# include <X11/X.h>
+	# include <X11/keysym.h>
+#endif
 
 # define EMPTY "Map file is empty"
 # define NOT_RECT "Map is not rectangular"
@@ -25,15 +42,6 @@
 # define INV_CHAR "Char in map not valid"
 # define INV_ARG "Number of arguments is not valid"
 # define PIXEL 24
-# define A 0
-# define S 1
-# define D 2
-# define W 13
-# define AR_R 124
-# define AR_L 123
-# define AR_U 126
-# define AR_D 125
-# define ESC 53
 # define KEYPRESS 02
 # define DESTROYNOTIFY 17
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
+/*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 17:46:38 by lagea             #+#    #+#             */
-/*   Updated: 2024/05/31 17:07:12 by lagea            ###   ########.fr       */
+/*   Updated: 2025/01/14 17:28:01 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,19 @@ int	when_destroy(t_data *data)
 
 int	when_keypress(int keysym, t_data *data)
 {
-	if (keysym == ESC)
+	if (keysym == XK_Escape)
 		when_destroy(data);
-	else if (keysym == W || keysym == AR_U)
+	else if (keysym == XK_w || keysym == XK_Up)
 		move(data, (data->player.x), (data->player.y - 1));
-	else if (keysym == D || keysym == AR_R)
+	else if (keysym == XK_d || keysym == XK_Right)
 		move(data, (data->player.x + 1), (data->player.y));
-	else if (keysym == A || keysym == AR_L)
+	else if (keysym == XK_a || keysym == XK_Left)
 		move(data, (data->player.x - 1), (data->player.y));
-	else if (keysym == S || keysym == AR_D)
+	else if (keysym == XK_s || keysym == XK_Down)
 		move(data, (data->player.x), (data->player.y + 1));
 	else
 		return (0);
-	ft_printf("Moves : %d\n", data->count);
+	ft_printf("Moves : %d", data->count);
 	return (1);
 }
 
