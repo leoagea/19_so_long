@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 17:46:38 by lagea             #+#    #+#             */
-/*   Updated: 2025/01/14 17:28:01 by lagea            ###   ########.fr       */
+/*   Updated: 2025/01/14 18:21:26 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	when_keypress(int keysym, t_data *data)
 		move(data, (data->player.x), (data->player.y + 1));
 	else
 		return (0);
-	ft_printf("Moves : %d", data->count);
+	ft_printf("Moves : %d\n", data->count);
 	return (1);
 }
 
